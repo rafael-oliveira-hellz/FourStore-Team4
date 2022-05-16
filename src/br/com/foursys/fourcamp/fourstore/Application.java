@@ -3,7 +3,7 @@
  */
 package br.com.foursys.fourcamp.fourstore;
 
-import br.com.foursys.fourcamp.communication.MainMenu;
+import br.com.foursys.fourcamp.fourstore.communication.MainMenu;
 
 /**
  * @author Rafael de Oliveira

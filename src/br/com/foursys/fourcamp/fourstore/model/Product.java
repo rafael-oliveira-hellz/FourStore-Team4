@@ -1,4 +1,4 @@
-package br.com.foursys.fourcamp.model;
+package br.com.foursys.fourcamp.fourstore.model;
 
 public class Product {
 	String sku;

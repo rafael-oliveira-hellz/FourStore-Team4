@@ -1,4 +1,4 @@
-package br.com.foursys.fourcamp.communication;
+package br.com.foursys.fourcamp.fourstore.communication;
 
 public class MainMenu {
 	public void mainMenu() {

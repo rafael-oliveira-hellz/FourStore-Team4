@@ -6,16 +6,16 @@ public class PaymentMethods {
     public static final int CreditCard = 3;
     public static final int Pix = 4;
 
-    public static PaymentMethod getPaymentMethod(int paymentMethod) {
+    public static PaymentMethodEnum getPaymentMethod(int paymentMethod) {
         switch (paymentMethod) {
             case 1:
-                return PaymentMethod.Billet;
+                return PaymentMethodEnum.Billet;
             case 2:
-                return PaymentMethod.BilletInstallment;
+                return PaymentMethodEnum.BilletInstallment;
             case 3:
-                return PaymentMethod.CreditCard;
+                return PaymentMethodEnum.CreditCard;
             case 4:
-                return PaymentMethod.Pix;
+                return PaymentMethodEnum.Pix;
             default:
                 return null;
         }

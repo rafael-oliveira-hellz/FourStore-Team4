@@ -7,23 +7,22 @@ import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductData implements ProductInterfaceData {
 	
-		List<Object> ListProduct = new ArrayList<Object>();
+		List<Product> ListProduct = new ArrayList<Product>();
 
 		@Override
-		public void save(Object product) {
+		public Product save(Product product) {
 			ListProduct.add(product);
-			// TODO Auto-generated method stub
+			return product;
 
 		}
 
 		
 
 		@Override
-		public void delete(Object object) {
-			Product product = new Product();
+		public void deleteBySku(String sku) {
 			for (int x = 0; x < ListProduct.size(); x++) {
-				Product product2 = (Product) ListProduct.get(x);
-				if (product2.getSku().equals(product.getSku())) {
+				Product product = (Product) ListProduct.get(x);
+				if (product.getSku().equals(sku)) {
 					this.ListProduct.remove(x);
 				}
 
@@ -33,8 +32,8 @@ public class ProductData implements ProductInterfaceData {
 		}
 
 		
-		public Object findBySku(String sku) {
-			Object comeback = null;
+		public Product findBySku(String sku) {
+			Product comeback = null;
 			for (int x = 0; x < ListProduct.size(); x++) {
 				Product product = (Product) ListProduct.get(x);
 				if (product.getSku().equals(sku)) {
@@ -46,11 +45,20 @@ public class ProductData implements ProductInterfaceData {
 		}
 
 		@Override
-		public List<Object> findAll() {
+		public List<Product> findAll() {
 		
 			// TODO Auto-generated method stub
 			return ListProduct;
 		}
+
+
+
+	
+		
+
+
+
+		
 
 	}
 

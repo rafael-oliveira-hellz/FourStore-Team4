@@ -20,7 +20,7 @@ public class ProductService {
         return savedProduct.getSku() + " criado ";
     }
 
-    public String updateById(String sku, Product Product) throws ProductNotFoundException {
+    public String updateBySku(String sku, Product Product) throws ProductNotFoundException {
         verifyIfExists(sku);
         Product updatedProduct = getProduct(Product);
         return updatedProduct.getSku() + " atualizado ";
@@ -33,16 +33,16 @@ public class ProductService {
 
     public void delete(String sku) throws ProductNotFoundException {
         verifyIfExists(sku);
-        ProductRepository.deleteById(sku);
+        ProductRepository.deleteBySku(sku);
     }
 
     private String createMessageResponse(String sku, String s) {
-        return s + "Produto com a ID " + sku;
+        return s + "Produto com a Sku " + sku;
     }
 
     private Product verifyIfExists(String service) throws ProductNotFoundException {
         return ProductRepository.findBySku(service)
-                .orElseThrow(() -> new ProductNotFoundException(id));
+                .orElseThrow(() -> new ProductNotFoundException(sku));
     }
 
     private Product getProduct(Product Product) {

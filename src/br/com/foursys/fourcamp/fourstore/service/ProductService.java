@@ -1,18 +1,15 @@
 package br.com.foursys.fourcamp.fourstore.service;
 
 import java.util.List;
-import br.com.foursys.fourcamp.fourstore.data.ProductInterfaceData;
+import br.com.foursys.fourcamp.fourstore.data.ProductDataInterface;
 
 import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductService {
 
-	
-	
-//	depende do Data para estabelecer a interface
-	private ProductInterfaceData ProductInterfaceData;
+	private ProductDataInterface ProductInterfaceData;
 
-    public ProductService(ProductInterfaceData ProductInterfaceData) {
+    public ProductService(ProductDataInterface ProductInterfaceData) {
         this.ProductInterfaceData = ProductInterfaceData;
     }
 

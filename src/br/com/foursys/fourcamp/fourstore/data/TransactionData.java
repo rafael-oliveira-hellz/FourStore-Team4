@@ -3,18 +3,21 @@ package br.com.foursys.fourcamp.fourstore.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionData implements DataInterface {
-	List<Object> list = new ArrayList<Object>();
+import br.com.foursys.fourcamp.fourstore.model.Transaction;
+
+public class TransactionData implements TransactionDataInterface {
+	
+	List<Transaction> list = new ArrayList<Transaction>();
 
 	@Override
-	public void save(Object transaction) {
+	public Transaction save(Transaction transaction) {
 		list.add(transaction);
 		// TODO Auto-generated method stub
-
+		return transaction;
 	}
 
 	@Override
-	public List<Object> findAll() {
+	public List<Transaction> findAll() {
 
 		// TODO Auto-generated method stub
 		return list;

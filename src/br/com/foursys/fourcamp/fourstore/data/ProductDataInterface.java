@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.foursys.fourcamp.fourstore.model.Product;
 
-public interface ProductInterfaceData {
+public interface ProductDataInterface {
 	
 	public Product save(Product product);
 

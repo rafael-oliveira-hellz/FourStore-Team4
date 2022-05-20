@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.foursys.fourcamp.fourstore.model.Product;
 
-public class ProductData implements ProductInterfaceData {
+public class ProductData implements ProductDataInterface {
 	
 		List<Product> ListProduct = new ArrayList<Product>();
 

@@ -6,7 +6,7 @@ import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductService {
 
-	/*
+	
 	
 //	depende do Data para estabelecer a interface
 	private ProductRepository ProductRepository;
@@ -15,16 +15,15 @@ public class ProductService {
         this.ProductRepository = ProductRepository;
     }
 
-//	Sem DTO não tenho certeza de quem MessageResponse é responsabilidade
-    public MessageResponse createProduct(Product Product) {
+    public String createProduct(Product Product) {
         Product savedProduct = getProduct(Product);
-        return createMessageResponse(savedProduct.getId(), "Criado ");
+        return savedProduct.getSku() + " criado ";
     }
 
-    public MessageResponse updateById(Long id, Product Product) throws ProductNotFoundException {
-        verifyIfExists(id);
+    public String updateById(String sku, Product Product) throws ProductNotFoundException {
+        verifyIfExists(sku);
         Product updatedProduct = getProduct(Product);
-        return createMessageResponse(updatedProduct.getId(), "Atualizado ");
+        return updatedProduct.getSku() + " atualizado ";
     }
 
     public List<Product> listAll() {
@@ -32,20 +31,17 @@ public class ProductService {
         return allProducts;
     }
 
-    public void delete(Long id) throws ProductNotFoundException {
-        verifyIfExists(id);
-        ProductRepository.deleteById(id);
+    public void delete(String sku) throws ProductNotFoundException {
+        verifyIfExists(sku);
+        ProductRepository.deleteById(sku);
     }
 
-    private MessageResponse createMessageResponse(Long id, String s) {
-        return MessageResponse.builder()
-                .message(s + "Produto com a ID " + id)
-                .build();
+    private String createMessageResponse(String sku, String s) {
+        return s + "Produto com a ID " + sku;
     }
 
-//	Depende da lista presente no Data retornando os produtos de acordo com a respectiva id
-    private Product verifyIfExists(Long id) throws ProductNotFoundException {
-        return ProductRepository.findById(id)
+    private Product verifyIfExists(String service) throws ProductNotFoundException {
+        return ProductRepository.findBySku(service)
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
@@ -53,10 +49,10 @@ public class ProductService {
         return ProductRepository.save(Product);
     }
 
-    public Product findById(Long id) throws ProductNotFoundException {
-        Product Product = verifyIfExists(id);
+    public Product findBySku(String sku) throws ProductNotFoundException {
+        Product Product = verifyIfExists(sku);
         return Product;
     }
 	
-	*/
+	
 }

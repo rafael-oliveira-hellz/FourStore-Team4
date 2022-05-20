@@ -20,6 +20,30 @@ public class Costumer {
 	
 	public Costumer () {}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public PaymentMethodEnum getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethodEnum paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
 	@Override
 	public String toString() {
 		return "Costumer [name=" + name + ", cpf=" + cpf + "]";

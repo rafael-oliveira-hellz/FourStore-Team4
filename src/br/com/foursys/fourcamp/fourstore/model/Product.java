@@ -27,6 +27,9 @@ public class Product {
 		this.quantity = quantity;
 	}
 	
+	public Product() {}
+	
+	
 	public Product (String sku, Integer quantity) {
 		this.sku = sku;
 		this.quantity = quantity;

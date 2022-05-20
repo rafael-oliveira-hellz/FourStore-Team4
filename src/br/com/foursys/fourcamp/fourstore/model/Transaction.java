@@ -27,7 +27,7 @@ public class Transaction {
 
 	public Double getTotalPrice() {		
 		products.forEach((key, value) -> {
-			totalPrice += key.getBuyPrice() * value;			
+			totalPrice += key.getSellPrice() * value;			
 		});
 		return totalPrice;
 	}

@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+.metadata
+.settings
+ 
 # Bin files
 *.bin
 

@@ -4,7 +4,6 @@ public enum PaymentMethodEnum {
 	
 	Billet(1), BilletInstallment(2), CreditCard(3), Pix(4);
 	
-	
 	private final Integer paymentMethod;
 
 	private PaymentMethodEnum(Integer paymentMethod) {
@@ -14,6 +13,4 @@ public enum PaymentMethodEnum {
 	public Integer getPaymentMethod() {
 		return paymentMethod;
 	}
-	
-	
 }

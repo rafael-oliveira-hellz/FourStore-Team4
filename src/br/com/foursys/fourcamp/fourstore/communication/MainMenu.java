@@ -4,79 +4,74 @@ import java.util.Scanner;
 
 import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 
-/**
- * Fazer um menu com submenu para realizar vendar e consultar estoque de uma
- * loja.
- */
-
 public class MainMenu {
-	public void acesso() {
+	public void login() {
 
-		Scanner sc = new Scanner(System.in);
+		try (Scanner sc = new Scanner(System.in)) {
+			String mockUser = "Admin";
+			String mockPassword = "1234";
 
-		String login = "Admin";
-		String senha = "1234";
+			while (true) {
+				System.out.println("### FAï¿½A SEU LOGIN ###");
+				System.out.println("----------------------");
+				System.out.print("Digite seu login: ");
+				String user = sc.nextLine();
+				System.out.print("Digite sua senha: ");
+				String password = sc.nextLine();
 
-		while (true) {
-			System.out.println("### FAÇA SEU LOGIN ###");
-			System.out.println("----------------------");
-			System.out.print("Digite seu login: ");
-			String valorLogin = sc.nextLine();
-			System.out.print("Digite sua senha: ");
-			String valorSenha = sc.nextLine();
-
-			if ((!valorLogin.equalsIgnoreCase("Admin") || (!valorSenha.equals("1234")))) {
-				System.out.println("Acesso negado!!!");
-			} else {
-				menu();
-				break;
+				if ((!user.equals(mockUser) || (!password.equals(mockPassword)))) {
+					System.out.println("Acesso negado!!!");
+				} else {
+					menu();
+					break;
+				}
 			}
-		}
+		} 
 	}
 
-	boolean verificador = true;
+	boolean validator = true;
 
 	public void menu() {
 
 		Scanner input = new Scanner(System.in);
-		String op = " ";
-		while (verificador) {
+		String option = " ";
+		while (validator) {
 			System.out.println("\n## MENU PRINCIPAL ##");
 			System.out.println("|------------------|");
-			for (MenuEnum m : MenuEnum.values()) {
-				System.out.println("  " + m.getOpcao() + " - " + m);
+			for (MenuEnum navigation : MenuEnum.values()) {
+				System.out.println("  " + navigation.getOption() + " - " + navigation);
 			}
 			System.out.println("|------------------|");
-			System.out.print("Opção: ");
-			op = input.nextLine();
+			System.out.print("Opï¿½ï¿½o: ");
+			option = input.nextLine();
 
 			System.out.println();
-			if (op.equals("0")) {
-				System.out.println("### ENCERRANDO SISTEMA... ATÉ A PRÓXIMA ###");
+			if (option.equals("0")) {
+				System.out.println("### ENCERRANDO SISTEMA... ATï¿½ A PRï¿½XIMA ###");
 				System.exit(0);
 				input.close();
 
-			} else if (op.equals("1")) {
-				menuVenda();
+			} else if (option.equals("1")) {
+				transactionMenu();
 
-			} else if (op.equals("2")) {
-				menuEstoque();
+			} else if (option.equals("2")) {
+				stockMenu();
 
 			} else {
-				System.err.println("Digite uma opção válida");
+				System.err.println("Digite uma opï¿½ï¿½o vï¿½lida");
 				ThreadDelay();
 			}
 		}
 	}
 
-	public void menuVenda() {
+	public void transactionMenu() {
 
 	}
 
-	public void menuEstoque() {
+	public void stockMenu() {
 
 		Scanner sc = new Scanner(System.in);
-		String opc = " ";
+		String option = " ";
 
 		while (true) {
 
@@ -89,29 +84,29 @@ public class MainMenu {
 			System.out.println("+------------------------------+");
 			System.out.println("| 5 - SAIR                     |");
 			System.out.println("+------------------------------+");
-			System.out.print("\nOpção: ");
-			opc = sc.nextLine();
+			System.out.print("\nOpï¿½ï¿½o: ");
+			option = sc.nextLine();
 
-			if (opc.equals("1")) {
+			if (option.equals("1")) {
 				System.out.println("\nCADASTRAR PRODUTO\n");
-			} else if (opc.equals("2")) {
+			} else if (option.equals("2")) {
 				System.out.println("\nBUSCAR POR SKU\n");
-			} else if (opc.equals("3")) {
+			} else if (option.equals("3")) {
 				System.out.println("\nLISTAR TODO ESTOQUE\n");
-			} else if (opc.equals("4")) {
+			} else if (option.equals("4")) {
 				menu();
-			} else if (opc.equals("5")) {
-				System.out.println("\n### ENCERRANDO SISTEMA... ATÉ A PRÓXIMA ###");
+			} else if (option.equals("5")) {
+				System.out.println("\n### ENCERRANDO SISTEMA... ATï¿½ A PRï¿½XIMA ###");
 				System.exit(0);
 				break;
 			} else {
-				System.err.println("\nDigite uma opção válida\n");
+				System.err.println("\nDigite uma opï¿½ï¿½o vï¿½lida\n");
 				ThreadDelay();
 			}
 		}
 
-		if (opc.equals("")) {
-			verificador = false;
+		if (option.equals("")) {
+			validator = false;
 		}
 	}
 
@@ -122,5 +117,4 @@ public class MainMenu {
 			System.out.println("Nunca vai cair aqui");
 		}
 	}
-
 }

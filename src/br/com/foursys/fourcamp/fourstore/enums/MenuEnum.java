@@ -5,13 +5,13 @@ public enum MenuEnum {
 	ESTOQUE(2),
 	SAIR(0);
 	
-	private final Integer opcao;
+	private final Integer option;
 
-	private MenuEnum(Integer opcao) {
-		this.opcao = opcao;
+	private MenuEnum(Integer option) {
+		this.option = option;
 	}
 
-	public Integer getOpcao() {
-		return opcao;
+	public Integer getOption() {
+		return option;
 	}
 }

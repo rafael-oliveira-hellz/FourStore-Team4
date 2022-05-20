@@ -7,6 +7,7 @@ import br.com.foursys.fourcamp.fourstore.communication.MainMenu;
 
 /**
  * @author Rafael de Oliveira
+ * @author Michael Rafael
  *
  */
 public class Application {
@@ -18,7 +19,7 @@ public class Application {
 		// TODO Auto-generated method stub
 		MainMenu menu = new MainMenu();
 		
-		menu.acesso();
+		menu.login();
 	}
 
 }

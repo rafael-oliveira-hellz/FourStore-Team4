@@ -1,4 +1,4 @@
-package br.com.foursys.fourcamp.fourstore.service;
+package br.com.foursys.fourcamp.fourstore.exception;
 
 public class ProductNotFoundException extends Exception {
 

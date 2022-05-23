@@ -2,15 +2,15 @@ package br.com.foursys.fourcamp.fourstore.enums;
 
 public enum PaymentMethodEnum {
 	
-	BILLET(1), BILLETINSTALLMENT(2), CREDITCARD(3), PIX(4), CASH(5);
+	BILLET("Boleto à vista"), BILLETINSTALLMENT("Boleto parcelado"), CREDITCARD("Cartão de crédito"), PIX("Pix"), CASH("Dinheiro à vista");
 	
-	private final Integer paymentMethod;
+	private final String paymentMethod;
 
-	private PaymentMethodEnum(Integer paymentMethod) {
+	private PaymentMethodEnum(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public Integer getPaymentMethod() {
+	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 }

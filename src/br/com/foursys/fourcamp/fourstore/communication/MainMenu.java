@@ -7,7 +7,8 @@ import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 public class MainMenu {
 	public void login() {
 
-		try (Scanner sc = new Scanner(System.in)) {
+		Scanner sc = new Scanner(System.in);
+		{
 			String mockUser = "Admin";
 			String mockPassword = "1234";
 
@@ -26,7 +27,7 @@ public class MainMenu {
 					break;
 				}
 			}
-		} 
+		}
 	}
 
 	boolean validator = true;
@@ -42,12 +43,12 @@ public class MainMenu {
 				System.out.println("  " + navigation.getOption() + " - " + navigation);
 			}
 			System.out.println("|------------------|");
-			System.out.print("Op��o: ");
+			System.out.print("Opção: ");
 			option = input.nextLine();
 
 			System.out.println();
 			if (option.equals("0")) {
-				System.out.println("### ENCERRANDO SISTEMA... AT� A PR�XIMA ###");
+				System.out.println("### ENCERRANDO SISTEMA... ATÉ A PRÓXIMA ###");
 				System.exit(0);
 				input.close();
 
@@ -58,7 +59,7 @@ public class MainMenu {
 				stockMenu();
 
 			} else {
-				System.err.println("Digite uma op��o v�lida");
+				System.err.println("Digite uma opção válida");
 				ThreadDelay();
 			}
 		}
@@ -96,11 +97,11 @@ public class MainMenu {
 			} else if (option.equals("4")) {
 				menu();
 			} else if (option.equals("5")) {
-				System.out.println("\n### ENCERRANDO SISTEMA... AT� A PR�XIMA ###");
+				System.out.println("\n### ENCERRANDO SISTEMA... ATÉ A PRÓXIMA ###");
 				System.exit(0);
 				break;
 			} else {
-				System.err.println("\nDigite uma op��o v�lida\n");
+				System.err.println("\nDigite uma op��o válida\n");
 				ThreadDelay();
 			}
 		}

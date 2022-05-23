@@ -19,13 +19,12 @@ public class TransactionService {
         this.transactionDataInterface = transactionDataInterface;
     }
 
-    /*
+    
     public String createTransaction(Transaction transaction) throws StockInsufficientException, ProductNotFoundException {
         stockService.validatePurchase(stockDataInterface.findAll(), transaction);
         Transaction savedTransaction = getTransaction(transaction);
         return createMessageResponse(savedTransaction.getId(), " criado ");
     }
-	*/
     
     public List<Transaction> listAll() {
         List<Transaction> allTransactions = transactionDataInterface.findAll();

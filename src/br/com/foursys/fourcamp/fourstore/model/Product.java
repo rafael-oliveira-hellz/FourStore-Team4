@@ -2,6 +2,7 @@ package br.com.foursys.fourcamp.fourstore.model;
 
 public class Product {
 	private String sku;
+	private String brand;
 	private String type;
 	private String size;
 	private String color;
@@ -11,9 +12,10 @@ public class Product {
 	private Double  sellPrice;
 	private String description;
 	
-	public Product(String sku, String type, String size, String color, String category, String department,
+	public Product(String sku, String brand, String type, String size, String color, String category, String department,
 			Double buyPrice, Double sellPrice, String description) {
-
+		
+		this.brand = brand;
 		this.sku = sku;
 		this.type = type;
 		this.size = size;

@@ -7,19 +7,16 @@ import br.com.foursys.fourcamp.fourstore.model.Transaction;
 
 public class TransactionData implements TransactionDataInterface {
 	
-	List<Transaction> list = new ArrayList<Transaction>();
+	public static List<Transaction> list = new ArrayList<Transaction>();
 
 	@Override
 	public Transaction save(Transaction transaction) {
 		list.add(transaction);
-		// TODO Auto-generated method stub
 		return transaction;
 	}
 
 	@Override
 	public List<Transaction> findAll() {
-
-		// TODO Auto-generated method stub
 		return list;
 	}
 

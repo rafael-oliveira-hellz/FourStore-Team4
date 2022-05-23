@@ -1,13 +1,11 @@
 package br.com.foursys.fourcamp.fourstore.data;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
-
 import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductData implements ProductDataInterface {
 
-	HashMap<Product, Integer> listProduct = new HashMap<>();
+	public static HashMap<Product, Integer> listProduct = new HashMap<>();
 
 	@Override
 	public String save(Product product, Integer quantity) {
@@ -17,20 +15,16 @@ public class ProductData implements ProductDataInterface {
 
 	@Override
 	public void deleteBySku(String sku) {
-
-		listProduct.forEach((i, j) -> {
-			if (i.getSku().equals(sku)) {
-				this.listProduct.remove(i);
-
+		listProduct.forEach((product, quantity) -> {
+			if (product.getSku().equals(sku)) {
+				ProductData.listProduct.remove(product);
 			}
-
 		});
 
 	}
 
 	@Override
 	public HashMap<Product, Integer> findAll() {
-
 		return listProduct;
 	}
 
@@ -42,22 +36,17 @@ public class ProductData implements ProductDataInterface {
 
 	@Override
 	public Product findBySku(String sku) {
-		Product comeback;
-
-		for (Product p : listProduct.keySet()) {
-			if (p.getSku().equals(sku)) {
-				return p;
+		for (Product product : listProduct.keySet()) {
+			if (product.getSku().equals(sku)) {
+				return product;
 			}
 		}
-
 		return null;
 	}
 
 	@Override
 	public void setQuantity(Product product, Integer quantity) {
-
 		listProduct.put(product, quantity);
-
 	}
 
 }

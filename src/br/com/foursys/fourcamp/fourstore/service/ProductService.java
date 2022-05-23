@@ -1,6 +1,6 @@
 package br.com.foursys.fourcamp.fourstore.service;
 
-import java.util.List;
+import java.util.HashMap;
 import br.com.foursys.fourcamp.fourstore.data.ProductDataInterface;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
@@ -8,32 +8,32 @@ import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductService {
 
-	private ProductDataInterface productInterfaceData;
+	private ProductDataInterface productDataInterface;
 
-    public ProductService(ProductDataInterface productInterfaceData) {
-        this.productInterfaceData = productInterfaceData;
+    public ProductService(ProductDataInterface productDataInterface) {
+        this.productDataInterface = productDataInterface;
     }
 
     public String createProduct(Product product, Integer quantity) throws InvalidSellValueException {
     	validateProfit(product);
-        Product savedProduct = getProduct(product);
-        return createMessageResponse(savedProduct.getSku(), " criado ");
+        String savedProduct = getProduct(product, quantity);
+        return "Adicionadas " + savedProduct;
     }
 
-    public String updateBySku(String sku, Product product) throws ProductNotFoundException {
-        verifyIfExists(sku);
-        Product updatedProduct = getProduct(product);
-        return createMessageResponse(updatedProduct.getSku(), " atualizado ");
+    public String updateBySku(String sku, Integer quantity) throws ProductNotFoundException {
+        Product product = verifyIfExists(sku);
+        String updatedProduct = getProduct(product, quantity);
+        return "Adicionadas " + updatedProduct;
     }
 
-    public List<Product> listAll() {
-        List<Product> allProducts = productInterfaceData.findAll();
+    public HashMap<Product, Integer> listAll() {
+        HashMap<Product, Integer> allProducts = productDataInterface.findAll();
         return allProducts;
     }
 
     public void deleteBySku(String sku) throws ProductNotFoundException {
         verifyIfExists(sku);
-        productInterfaceData.deleteBySku(sku);
+        productDataInterface.deleteBySku(sku);
     }
 
     public String createMessageResponse(String sku, String s) {
@@ -41,10 +41,10 @@ public class ProductService {
     }
 
     private Product verifyIfExists(String sku) throws ProductNotFoundException {
-    	if (productInterfaceData.findBySku(sku).equals(null)) {
+    	if (productDataInterface.findBySku(sku).equals(null)) {
     		throw new ProductNotFoundException(sku);
     	} else {
-    		return productInterfaceData.findBySku(sku);
+    		return productDataInterface.findBySku(sku);
     	}
     }
     
@@ -54,8 +54,8 @@ public class ProductService {
     	}
     }
 
-    private Product getProduct(Product product) {
-        return productInterfaceData.save(product);
+    private String getProduct(Product product, Integer quantity) {
+        return productDataInterface.save(product, quantity);
     }
 
     public Product findBySku(String sku) throws ProductNotFoundException {

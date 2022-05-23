@@ -8,7 +8,12 @@ import br.com.foursys.fourcamp.fourstore.communication.MainMenu;
 /**
  * @author Rafael de Oliveira
  * @author Michael Rafael
- *
+ * @author Robson
+ * @author Thales
+ * @author Vanessa
+ * @author Vinícius Jesus
+ * @author Vinícius Santos
+ * @author Pedro Augusto
  */
 public class Application {
 
@@ -16,9 +21,9 @@ public class Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		MainMenu menu = new MainMenu();
-		
+
 		menu.login();
 	}
 

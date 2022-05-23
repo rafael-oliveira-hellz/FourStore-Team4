@@ -14,7 +14,7 @@ public class ProductService {
         this.productInterfaceData = productInterfaceData;
     }
 
-    public String createProduct(Product product) throws InvalidSellValueException {
+    public String createProduct(Product product, Integer quantity) throws InvalidSellValueException {
     	validateProfit(product);
         Product savedProduct = getProduct(product);
         return createMessageResponse(savedProduct.getSku(), " criado ");

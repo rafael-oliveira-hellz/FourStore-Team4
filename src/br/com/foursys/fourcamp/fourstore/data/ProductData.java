@@ -53,4 +53,11 @@ public class ProductData implements ProductDataInterface {
 		return null;
 	}
 
+	@Override
+	public void setQuantity(Product product, Integer quantity) {
+
+		listProduct.put(product, quantity);
+
+	}
+
 }

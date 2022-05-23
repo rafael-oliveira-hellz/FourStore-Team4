@@ -18,5 +18,6 @@ public interface ProductDataInterface {
 	
 	public Product findBySku(String sku);
 	
+	public void setQuantity(Product product, Integer quantity);
 
 }

@@ -1,27 +1,32 @@
 package br.com.foursys.fourcamp.fourstore.service;
 
-import java.util.HashMap;
 import java.util.List;
 
+import br.com.foursys.fourcamp.fourstore.data.StockDataInterface;
 import br.com.foursys.fourcamp.fourstore.data.TransactionDataInterface;
-import br.com.foursys.fourcamp.fourstore.model.Product;
+import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
+import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 import br.com.foursys.fourcamp.fourstore.model.Transaction;
+
 
 public class TransactionService {
 
 	private TransactionDataInterface transactionDataInterface;
+	private StockService stockService;
+	private StockDataInterface stockDataInterface;
 
     public TransactionService(TransactionDataInterface transactionDataInterface) {
         this.transactionDataInterface = transactionDataInterface;
     }
 
-    /* Vai ter id?
-    public String createTransaction(Transaction transaction) {
-        //validações de estoque
+    /*
+    public String createTransaction(Transaction transaction) throws StockInsufficientException, ProductNotFoundException {
+        stockService.validatePurchase(stockDataInterface.findAll(), transaction);
         Transaction savedTransaction = getTransaction(transaction);
         return createMessageResponse(savedTransaction.getId(), " criado ");
-    } */
-
+    }
+	*/
+    
     public List<Transaction> listAll() {
         List<Transaction> allTransactions = transactionDataInterface.findAll();
         return allTransactions;

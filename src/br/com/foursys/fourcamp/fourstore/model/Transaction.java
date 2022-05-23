@@ -3,11 +3,15 @@ package br.com.foursys.fourcamp.fourstore.model;
 import java.util.HashMap;
 
 public class Transaction {
+	private static Integer superId = 0;
+	private Integer id;
 	private HashMap<Product, Integer> products;
 	private Costumer constumer;
 	private Double totalPrice;
 	
 	public Transaction(Costumer constumer) {
+		superId++;
+		this.id = superId;
 		this.constumer = constumer;
 		this.totalPrice = 0.0;
 		products = new HashMap<Product, Integer>();
@@ -16,7 +20,11 @@ public class Transaction {
 	public Costumer getConstumer() {
 		return constumer;
 	}
-
+	
+	public Integer getId() {
+		return id;
+	}
+	
 	public HashMap<Product, Integer> getProducts() {
 		return products;
 	}

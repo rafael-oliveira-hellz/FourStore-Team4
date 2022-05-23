@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import br.com.foursys.fourcamp.fourstore.model.Product;
-import br.com.foursys.fourcamp.fourstore.model.Stock;
 
 public interface StockDataInterface {
 

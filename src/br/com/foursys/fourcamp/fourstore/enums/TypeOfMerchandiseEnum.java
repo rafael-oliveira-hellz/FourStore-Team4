@@ -5,25 +5,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum TypeOfMerchandiseEnum {
-	PANTS("231"),
-	TSHIRT("232"),
-	BLOUSE("233"),
-	SHOES("234"),
-	FLIPFLOP("235"),
-	INTIMATE("236"),
-	MAKEUP("237"),
-	COSMETIC("238"),
-	SCARF("239"),
-	TIE("240");
+	PANTS("231", "Calça"),
+	TSHIRT("232", "Camisa"),
+	BLOUSE("233", "Blusa"),
+	SHOES("234", "Tênis"),
+	FLIPFLOPS("235", "Chinelos"),
+	INTIMATE("236", "Roupa Íntima"),
+	MAKEUP("237", "Maquiagem"),
+	COSMETICS("238", "Cosméticos"),
+	SCARF("239", "Cachecol"),
+	TIE("240", "Gravata");
 
 	public String key;
+	public String description;
 
 	public String getKey() {
 		return key;
 	}
 
-	TypeOfMerchandiseEnum(String key) {
+	public String getDescription() {
+		return description;
+	}
+
+	TypeOfMerchandiseEnum(String key, String description) {
 		this.key = key;
+		this.description = description;
 	}
 
 	private static final Map<String, TypeOfMerchandiseEnum> Lookup = new HashMap<String, TypeOfMerchandiseEnum>();
@@ -35,5 +41,13 @@ public enum TypeOfMerchandiseEnum {
 
 	public static TypeOfMerchandiseEnum get(String key) {
 		return Lookup.get(key);
+	}
+
+	public static TypeOfMerchandiseEnum getByDescription(String description) {
+		for (TypeOfMerchandiseEnum keyValue : EnumSet.allOf(TypeOfMerchandiseEnum.class)) {
+			if (keyValue.getDescription().equals(description))
+				return keyValue;
+		}
+		return null;
 	}
 }

@@ -6,18 +6,24 @@ import java.util.Map;
 
 public enum CategoryEnum {
 
-	MALE("10"),
-	FEMALE("11"),
-	BABY("12");
+	MALE("10", "Masculino"),
+	FEMALE("11", "Feminino"),
+	BABY("12", "Moda Bebê");
 
 	public String key;
+	public String description;
 
 	public String getKey() {
 		return key;
 	}
 
-	CategoryEnum(String key) {
+	public String getDescription() {
+		return description;
+	}
+
+	CategoryEnum(String key, String description) {
 		this.key = key;
+		this.description = description;
 	}
 
 	private static final Map<String, CategoryEnum> Lookup = new HashMap<String, CategoryEnum>();
@@ -29,5 +35,13 @@ public enum CategoryEnum {
 
 	public static CategoryEnum get(String key) {
 		return Lookup.get(key);
+	}
+
+	public static CategoryEnum getByDescription(String description) {
+		for (CategoryEnum keyValue : EnumSet.allOf(CategoryEnum.class)) {
+			if (keyValue.getDescription().equals(description))
+				return keyValue;
+		}
+		return null;
 	}
 }

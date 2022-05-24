@@ -18,6 +18,7 @@ public enum BrandEnum {
     OLYMPIKUS("OLP"),
     OBOTICARIO("OBT"),
     NATURA("NTR"),
+    AVON("AVN"),
     CHANEL5("CNL"),
     ABIPROJECT("ABI"),
     BOSS("BOS"),

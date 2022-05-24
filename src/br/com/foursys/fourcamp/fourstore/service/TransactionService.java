@@ -20,7 +20,7 @@ public class TransactionService {
     
     public String createTransaction(Transaction transaction) throws StockInsufficientException, ProductNotFoundException {
         stockService.validatePurchase(transaction);
-        Transaction savedTransaction = getTransaction(transaction);
+        Transaction savedTransaction = setTransaction(transaction);
         return createMessageResponse(savedTransaction.getId(), " criado ");
     }
     
@@ -33,7 +33,7 @@ public class TransactionService {
         return s + "Transação com a ID " + id;
     }
 	
-    private Transaction getTransaction(Transaction transaction) {
+    private Transaction setTransaction(Transaction transaction) {
         return transactionDataInterface.save(transaction);
     }
 }

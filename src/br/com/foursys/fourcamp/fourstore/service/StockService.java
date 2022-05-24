@@ -74,7 +74,7 @@ public class StockService {
 
 	}
 
-	private void validateProfit(Product product) throws InvalidSellValueException {
+	public void validateProfit(Product product) throws InvalidSellValueException {
     	if ((product.getBuyPrice() * 1.25) > product.getSellPrice()) { 
     		throw new InvalidSellValueException();
     	}

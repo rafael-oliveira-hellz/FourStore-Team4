@@ -74,6 +74,16 @@ public class StockService {
 
 	}
 
+	//Boolean ou Exception?
+	public Boolean validateIndividualPurchase(Product product, Integer quantity) {
+		HashMap<Product, Integer> products = productData.findAll();
+		if (!products.containsKey(product) || products.get(product) < quantity) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	public void validateProfit(Product product) throws InvalidSellValueException {
     	if ((product.getBuyPrice() * 1.25) > product.getSellPrice()) { 
     		throw new InvalidSellValueException();

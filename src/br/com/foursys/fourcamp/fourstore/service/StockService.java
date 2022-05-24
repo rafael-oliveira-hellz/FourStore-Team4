@@ -1,8 +1,6 @@
 package br.com.foursys.fourcamp.fourstore.service;
 
 import java.util.HashMap;
-import java.util.Map;
-
 import br.com.foursys.fourcamp.fourstore.data.ProductData;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
@@ -68,10 +66,10 @@ public class StockService {
 	}
 
 	public void checkStock(HashMap<Product, Integer> products) throws StockInsufficientException {
-		products.forEach((i, j) -> {
-			String sku = i.getSku();
+		products.forEach((requestedProduct, requestedQuantity) -> {
+			String sku = requestedProduct.getSku();
 			Product product = productData.findBySku(sku);
-			productData.setQuantity(product, productData.getQuantity(sku) - j);
+			productData.setQuantity(product, productData.getQuantity(sku) - requestedQuantity);
 		});
 
 	}

@@ -13,7 +13,7 @@ public class MainMenu {
 			String mockPassword = "1234";
 
 			while (true) {
-				System.out.println("### FA�A SEU LOGIN ###");
+				System.out.println("### FAÇA SEU LOGIN ###");
 				System.out.println("----------------------");
 				System.out.print("Digite seu login: ");
 				String user = sc.nextLine();
@@ -23,6 +23,7 @@ public class MainMenu {
 				if ((!user.equals(mockUser) || (!password.equals(mockPassword)))) {
 					System.out.println("Acesso negado!!!");
 				} else {
+					System.out.println("Bem vindo(a), " + user + "!!!");
 					menu();
 					break;
 				}
@@ -101,7 +102,7 @@ public class MainMenu {
 				System.exit(0);
 				break;
 			} else {
-				System.err.println("\nDigite uma op��o válida\n");
+				System.err.println("\nDigite uma opção válida\n");
 				ThreadDelay();
 			}
 		}

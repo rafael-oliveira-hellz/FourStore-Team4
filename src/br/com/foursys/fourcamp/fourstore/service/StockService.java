@@ -12,8 +12,8 @@ public class StockService {
 
 	private ProductData productData;
 
-	public StockService(ProductData productData) {
-		this.productData = productData;
+	public StockService() {
+		this.productData = new ProductData();
 	}
 
 	public String createProductStock(Product product, Integer quantity) throws InvalidSellValueException {

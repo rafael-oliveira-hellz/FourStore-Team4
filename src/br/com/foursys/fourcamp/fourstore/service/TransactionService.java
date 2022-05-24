@@ -13,8 +13,8 @@ public class TransactionService {
 	private TransactionData transactionData;
 	private StockService stockService;
 
-    public TransactionService(TransactionData transactionData) {
-        this.transactionData = transactionData;
+    public TransactionService() {
+        this.transactionData = new TransactionData();
     }
 
     

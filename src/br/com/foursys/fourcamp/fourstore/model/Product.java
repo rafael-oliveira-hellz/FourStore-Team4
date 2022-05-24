@@ -28,11 +28,11 @@ public class Product {
 	
 	private void parseSku(String sku) {
 		this.brand = sku.substring(0, 3);
-		this.size = SizeEnum.get(sku.substring(3, 5)).toString();
-		this.category = CategoryEnum.get(sku.substring(5, 7)).toString();
-		this.type = TypeOfMerchandiseEnum.get(sku.substring(7, 9)).toString();
-		this.department = DepartmentEnum.get(sku.substring(9, 11)).toString();
-		this.color = ColorEnum.get(sku.substring(11, 13)).toString();
+		this.size = SizeEnum.get(sku.substring(3, 5)).getDescription();
+		this.category = CategoryEnum.get(sku.substring(5, 7)).getDescription();
+		this.type = TypeOfMerchandiseEnum.get(sku.substring(7, 9)).getDescription();
+		this.department = DepartmentEnum.get(sku.substring(9, 11)).getDescription();
+		this.color = ColorEnum.get(sku.substring(11, 13)).getDescription();
 	}
 
 	public Double getBuyPrice() {

@@ -5,34 +5,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum TypeOfMerchandiseEnum {
-	CALCA("231"),
-	CAMISETA("232"),
-	BLUSA("233"),
-	TENIS("234"),
-	CHINELO("235"),
-	INTIMA("236"),
-	MAQUIAGEM("237"),
-	COSMETICOS("238"),
-	CACHECOL("239"),
-	GRAVATA("240");
+	PANTS("231"),
+	TSHIRT("232"),
+	BLOUSE("233"),
+	SHOES("234"),
+	FLIPFLOP("235"),
+	INTIMATE("236"),
+	MAKEUP("237"),
+	COSMETIC("238"),
+	SCARF("239"),
+	TIE("240");
 
 	public String key;
-	
+
 	public String getKey() {
 		return key;
 	}
-	
+
 	TypeOfMerchandiseEnum(String key) {
 		this.key = key;
 	}
-	
+
 	private static final Map<String, TypeOfMerchandiseEnum> Lookup = new HashMap<String, TypeOfMerchandiseEnum>();
-	
+
 	static {
-		for(TypeOfMerchandiseEnum keyValue : EnumSet.allOf(TypeOfMerchandiseEnum.class))
+		for (TypeOfMerchandiseEnum keyValue : EnumSet.allOf(TypeOfMerchandiseEnum.class))
 			Lookup.put(keyValue.getKey(), keyValue);
 	}
-	
+
 	public static TypeOfMerchandiseEnum get(String key) {
 		return Lookup.get(key);
 	}

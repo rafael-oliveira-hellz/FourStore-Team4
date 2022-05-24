@@ -5,34 +5,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ColorEnum {
-	
-	VERMELHO("50"),
-	VERDE("51"),
-	AZUL("52"),
-	BRANCO("53"),
-	PRETO("54"),
-	AMARELO("55"),
-	MARROM("56"),
-	CINZA("57"),
-	ROSA("58");
-	
+
+	RED("50"),
+	GREEN("51"),
+	BLUE("52"),
+	WHITE("53"),
+	BLACK("54"),
+	YELLOW("55"),
+	BROWN("56"),
+	GREY("57"),
+	PINK("58");
+
 	public String key;
-	
+
 	public String getKey() {
 		return key;
 	}
-	
+
 	ColorEnum(String key) {
 		this.key = key;
 	}
-	
+
 	private static final Map<String, ColorEnum> Lookup = new HashMap<String, ColorEnum>();
-	
+
 	static {
-		for(ColorEnum keyValue : EnumSet.allOf(ColorEnum.class))
+		for (ColorEnum keyValue : EnumSet.allOf(ColorEnum.class))
 			Lookup.put(keyValue.getKey(), keyValue);
 	}
-	
+
 	public static ColorEnum get(String key) {
 		return Lookup.get(key);
 	}

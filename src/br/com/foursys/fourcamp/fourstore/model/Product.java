@@ -1,5 +1,11 @@
 package br.com.foursys.fourcamp.fourstore.model;
 
+import br.com.foursys.fourcamp.fourstore.enums.CategoryEnum;
+import br.com.foursys.fourcamp.fourstore.enums.ColorEnum;
+import br.com.foursys.fourcamp.fourstore.enums.DepartmentEnum;
+import br.com.foursys.fourcamp.fourstore.enums.SizeEnum;
+import br.com.foursys.fourcamp.fourstore.enums.TypeOfMerchandiseEnum;
+
 public class Product {
 	private String sku;
 	private String brand;
@@ -12,28 +18,23 @@ public class Product {
 	private Double  sellPrice;
 	private String description;
 	
-	public Product(String sku, String brand, String type, String size, String color, String category, String department,
-			Double buyPrice, Double sellPrice, String description) {
-		
-		this.brand = brand;
-		this.sku = sku;
-		this.type = type;
-		this.size = size;
-		this.color = color;
-		this.category = category;
-		this.department = department;
+	
+	public Product (String sku, String description, double buyPrice, double sellPrice) {
+		this.description = description;
 		this.buyPrice = buyPrice;
 		this.sellPrice = sellPrice;
-		this.description = description;
+		parseSku(sku);
 	}
 	
-	public Product() {}
-	
-	
-	public Product (String sku, Integer quantity) {
-		this.sku = sku;
+	private void parseSku(String sku) {
+		this.brand = sku.substring(0, 3);
+		this.size = SizeEnum.get(sku.substring(3, 5)).toString();
+		this.category = CategoryEnum.get(sku.substring(5, 7)).toString();
+		this.type = TypeOfMerchandiseEnum.get(sku.substring(7, 9)).toString();
+		this.department = DepartmentEnum.get(sku.substring(9, 11)).toString();
+		this.color = ColorEnum.get(sku.substring(11, 13)).toString();
 	}
-	
+
 	public Double getBuyPrice() {
 		return buyPrice;
 	}

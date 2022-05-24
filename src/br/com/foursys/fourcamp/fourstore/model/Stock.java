@@ -1,15 +1,23 @@
 package br.com.foursys.fourcamp.fourstore.model;
 
 public class Stock {
-	private Integer currentId;
 	
-	public Stock() {
-		currentId = 100;
+	private Product product;
+	private Integer quantity;
+	
+	public Stock(Product product, Integer quantity) {
+		this.product = product;
+		this.quantity = quantity;
+	}
+	
+	public Product getProduct() {
+		return product;
+	}
+	
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public Integer getCurrentId() {
-		return ++currentId;
-	}
 	
 	
 }

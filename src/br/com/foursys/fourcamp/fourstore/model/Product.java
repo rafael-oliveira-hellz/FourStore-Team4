@@ -2,6 +2,7 @@ package br.com.foursys.fourcamp.fourstore.model;
 
 public class Product {
 	private String sku;
+	private String brand;
 	private String type;
 	private String size;
 	private String color;
@@ -10,11 +11,11 @@ public class Product {
 	private Double buyPrice;
 	private Double  sellPrice;
 	private String description;
-	private Integer quantity;
 	
-	public Product(String sku, String type, String size, String color, String category, String department,
-			Double buyPrice, Double sellPrice, String description, Integer quantity) {
-
+	public Product(String sku, String brand, String type, String size, String color, String category, String department,
+			Double buyPrice, Double sellPrice, String description) {
+		
+		this.brand = brand;
 		this.sku = sku;
 		this.type = type;
 		this.size = size;
@@ -24,7 +25,6 @@ public class Product {
 		this.buyPrice = buyPrice;
 		this.sellPrice = sellPrice;
 		this.description = description;
-		this.quantity = quantity;
 	}
 	
 	public Product() {}
@@ -32,7 +32,6 @@ public class Product {
 	
 	public Product (String sku, Integer quantity) {
 		this.sku = sku;
-		this.quantity = quantity;
 	}
 	
 	public Double getBuyPrice() {
@@ -57,14 +56,6 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getType() {
@@ -100,17 +91,30 @@ public class Product {
 	public String getSku() {
 		return sku;
 	}
-	
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
 	@Override
 	public String toString() {
 		return "Product [sku=" + sku + ", type=" + type + ", size=" + size + ", color=" + color + ", category="
 				+ category + ", department=" + department + ", Price=" + sellPrice + ", description=" + description
-				+ ", quantity=" + quantity + "]";
+				+ "]";
 	}
-
 	
-
-	
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Product product = (Product) o;
+		return sku.equals(product.sku);
+	}
 }

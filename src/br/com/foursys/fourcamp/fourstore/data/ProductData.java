@@ -1,65 +1,52 @@
 package br.com.foursys.fourcamp.fourstore.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashMap;
 import br.com.foursys.fourcamp.fourstore.model.Product;
 
 public class ProductData implements ProductDataInterface {
-	
-		List<Product> ListProduct = new ArrayList<Product>();
 
-		@Override
-		public Product save(Product product) {
-			ListProduct.add(product);
-			return product;
+	public static HashMap<Product, Integer> listProduct = new HashMap<>();
 
-		}
+	@Override
+	public String save(Product product, Integer quantity) {
+		listProduct.put(product, quantity);
+		return quantity + " unidades do produto com a Sku" + product.getSku();
+	}
 
-		
-
-		@Override
-		public void deleteBySku(String sku) {
-			for (int x = 0; x < ListProduct.size(); x++) {
-				Product product = (Product) ListProduct.get(x);
-				if (product.getSku().equals(sku)) {
-					this.ListProduct.remove(x);
-				}
-
+	@Override
+	public void deleteBySku(String sku) {
+		listProduct.forEach((product, quantity) -> {
+			if (product.getSku().equals(sku)) {
+				ProductData.listProduct.remove(product);
 			}
-			// TODO Auto-generated method stub
-
-		}
-
-		
-		public Product findBySku(String sku) {
-			Product comeback = null;
-			for (int x = 0; x < ListProduct.size(); x++) {
-				Product product = (Product) ListProduct.get(x);
-				if (product.getSku().equals(sku)) {
-					comeback = product;
-				}
-
-			}
-			return comeback;
-		}
-
-		@Override
-		public List<Product> findAll() {
-		
-			// TODO Auto-generated method stub
-			return ListProduct;
-		}
-
-
-
-	
-		
-
-
-
-		
+		});
 
 	}
 
+	@Override
+	public HashMap<Product, Integer> findAll() {
+		return listProduct;
+	}
 
+	@Override
+	public Integer getQuantity(String sku) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product findBySku(String sku) {
+		for (Product product : listProduct.keySet()) {
+			if (product.getSku().equals(sku)) {
+				return product;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void setQuantity(Product product, Integer quantity) {
+		listProduct.put(product, quantity);
+	}
+
+}

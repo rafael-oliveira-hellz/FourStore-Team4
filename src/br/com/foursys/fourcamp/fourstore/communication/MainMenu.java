@@ -25,6 +25,7 @@ public class MainMenu {
 				} else {
 					System.out.println("Bem vindo(a), " + user + "!!!");
 					menu();
+					sc.close();
 					break;
 				}
 			}
@@ -100,6 +101,7 @@ public class MainMenu {
 			} else if (option.equals("5")) {
 				System.out.println("\n### ENCERRANDO SISTEMA... ATÉ A PRÓXIMA ###");
 				System.exit(0);
+				sc.close();
 				break;
 			} else {
 				System.err.println("\nDigite uma opção válida\n");

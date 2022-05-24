@@ -2,7 +2,7 @@ package br.com.foursys.fourcamp.fourstore.service;
 
 import java.util.List;
 
-import br.com.foursys.fourcamp.fourstore.data.TransactionDataInterface;
+import br.com.foursys.fourcamp.fourstore.data.TransactionData;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 import br.com.foursys.fourcamp.fourstore.model.Transaction;
@@ -10,11 +10,11 @@ import br.com.foursys.fourcamp.fourstore.model.Transaction;
 
 public class TransactionService {
 
-	private TransactionDataInterface transactionDataInterface;
+	private TransactionData transactionData;
 	private StockService stockService;
 
-    public TransactionService(TransactionDataInterface transactionDataInterface) {
-        this.transactionDataInterface = transactionDataInterface;
+    public TransactionService(TransactionData transactionData) {
+        this.transactionData = transactionData;
     }
 
     
@@ -25,7 +25,7 @@ public class TransactionService {
     }
     
     public List<Transaction> listAll() {
-        List<Transaction> allTransactions = transactionDataInterface.findAll();
+        List<Transaction> allTransactions = transactionData.findAll();
         return allTransactions;
     }
 
@@ -34,7 +34,7 @@ public class TransactionService {
     }
 	
     private Transaction setTransaction(Transaction transaction) {
-        return transactionDataInterface.save(transaction);
+        return transactionData.save(transaction);
     }
 }
 

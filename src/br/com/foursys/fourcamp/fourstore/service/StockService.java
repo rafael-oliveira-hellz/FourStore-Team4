@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.com.foursys.fourcamp.fourstore.data.ProductData;
+import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 import br.com.foursys.fourcamp.fourstore.model.Product;
@@ -17,9 +18,10 @@ public class StockService {
 		this.productData = productData;
 	}
 
-	public String createProductStock(Product product, Integer quantity) {
-		String savedStock = setStock(product, quantity);
-		return createMessageResponse(savedStock);
+	public String createProductStock(Product product, Integer quantity) throws InvalidSellValueException {
+		validateProfit(product);
+        String savedProduct = setProduct(product, quantity);
+        return "Adicionadas " + savedProduct;
 	}
 
 	public HashMap<Product, Integer> listAll() {
@@ -27,9 +29,9 @@ public class StockService {
 		return allProductsStocks;
 	}
 
-	public String validatePurchase(String sku, Transaction transaction)
+	public boolean validatePurchase(Transaction transaction)
 			throws StockInsufficientException, ProductNotFoundException {
-		return deductFromStock(sku, transaction);
+		return deductFromStock(transaction);
 	}
 
 	public String highStockWarning(Product product) {
@@ -40,23 +42,24 @@ public class StockService {
 			return null;
 		}
 	}
+	
+	public void deleteBySku(String sku) throws ProductNotFoundException {
+        verifyIfExists(sku);
+        productData.deleteBySku(sku);
+    }
+	
+	private Product verifyIfExists(String sku) throws ProductNotFoundException {
+    	if (productData.findBySku(sku).equals(null)) {
+    		throw new ProductNotFoundException(sku);
+    	} else {
+    		return productData.findBySku(sku);
+    	}
+    }
 
-	public String deductFromStock(String sku, Transaction transaction)
-			throws ProductNotFoundException, StockInsufficientException {
-		Product product = null;
-		try {
-			Integer quantity = productData.getQuantity(sku);
-			product = productData.findBySku(sku);
-
-			if (product == null) {
-				return "Sku não encontrado";
-			}
-		} catch (Exception e) {
-			return "Sku não encontrado";
-		}
-
+	public boolean deductFromStock(Transaction transaction)
+			throws ProductNotFoundException, StockInsufficientException {		
 		checkStock(transaction.getProducts());
-		return "a";
+		return true;
 	}
 
 	public void reStock(String sku, Integer quantity) {
@@ -73,12 +76,18 @@ public class StockService {
 
 	}
 
-	private String createMessageResponse(String savedStock) {
-		return "Foram adicionadas " + savedStock;
-	};
-
-	private String setStock(Product product, Integer quantity) {
-		return productData.save(product, quantity);
-	}
-
+	private void validateProfit(Product product) throws InvalidSellValueException {
+    	if ((product.getBuyPrice() * 1.25) > product.getSellPrice()) { 
+    		throw new InvalidSellValueException();
+    	}
+    }
+	
+	private String setProduct(Product product, Integer quantity) {
+        return productData.save(product, quantity);
+    }
+	
+	public Product findBySku(String sku) throws ProductNotFoundException {
+        Product product = verifyIfExists(sku);
+        return product;
+    }
 }

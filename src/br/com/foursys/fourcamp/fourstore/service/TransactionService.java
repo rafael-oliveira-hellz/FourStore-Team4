@@ -2,7 +2,6 @@ package br.com.foursys.fourcamp.fourstore.service;
 
 import java.util.List;
 
-import br.com.foursys.fourcamp.fourstore.data.StockDataInterface;
 import br.com.foursys.fourcamp.fourstore.data.TransactionDataInterface;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
@@ -13,7 +12,6 @@ public class TransactionService {
 
 	private TransactionDataInterface transactionDataInterface;
 	private StockService stockService;
-	private StockDataInterface stockDataInterface;
 
     public TransactionService(TransactionDataInterface transactionDataInterface) {
         this.transactionDataInterface = transactionDataInterface;
@@ -21,7 +19,7 @@ public class TransactionService {
 
     
     public String createTransaction(Transaction transaction) throws StockInsufficientException, ProductNotFoundException {
-        stockService.validatePurchase(stockDataInterface.findAll(), transaction);
+        stockService.validatePurchase(transaction);
         Transaction savedTransaction = getTransaction(transaction);
         return createMessageResponse(savedTransaction.getId(), " criado ");
     }

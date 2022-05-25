@@ -1,52 +1,73 @@
 package br.com.foursys.fourcamp.fourstore.data;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.foursys.fourcamp.fourstore.data.interfaces.DataInterface;
+
 import br.com.foursys.fourcamp.fourstore.model.Product;
+import br.com.foursys.fourcamp.fourstore.model.Stock;
 
-public class ProductData implements ProductDataInterface {
+public class ProductData implements DataInterface {
 
-	public static HashMap<Product, Integer> listProduct = new HashMap<>();
+	public static List<Stock> listProduct = new ArrayList<>();
 
 	@Override
-	public String save(Product product, Integer quantity) {
-		listProduct.put(product, quantity);
-		return quantity + " unidades do produto com a Sku" + product.getSku();
+	public void save(Object object) {
+
+		Stock stock = (Stock) object;
+		listProduct.add(stock);
+		
 	}
 
-	@Override
 	public void deleteBySku(String sku) {
-		listProduct.forEach((product, quantity) -> {
-			if (product.getSku().equals(sku)) {
-				ProductData.listProduct.remove(product);
+		for (int i = 0; i < listProduct.size(); i++) {
+			String p = listProduct.get(i).getProduct().getSku();
+			if (p.equals(sku)) {
+				listProduct.remove(i);
 			}
-		});
-
+		}
 	}
 
 	@Override
-	public HashMap<Product, Integer> findAll() {
+	public List<Stock> findAll() {
 		return listProduct;
 	}
 
-	@Override
 	public Integer getQuantity(String sku) {
-		// TODO Auto-generated method stub
+
+		for (int i = 0; i < listProduct.size(); i++) {
+			Stock p = listProduct.get(i);
+			if (p.getProduct().getSku().equals(sku)) {
+				return p.getQuantity();
+			}
+		}
 		return null;
+
 	}
 
-	@Override
 	public Product findBySku(String sku) {
-		for (Product product : listProduct.keySet()) {
-			if (product.getSku().equals(sku)) {
-				return product;
+		for (int i = 0; i < listProduct.size(); i++) {
+			Stock p = listProduct.get(i);
+			if (p.getProduct().getSku().equals(sku)) {
+				return p.getProduct();
 			}
 		}
 		return null;
 	}
 
-	@Override
-	public void setQuantity(Product product, Integer quantity) {
-		listProduct.put(product, quantity);
+	public void setQuantity(Object object) {
+		for (int i = 0; i < listProduct.size(); i++) {
+			Stock p = listProduct.get(i);
+			Stock stock = (Stock) object;
+			String sku = stock.getProduct().getSku();
+			Integer newQuantity = stock.getQuantity();
+			Integer quantity = p.getQuantity();
+			if (p.getProduct().getSku().equals(sku)) {
+				p.setQuantity(newQuantity + quantity);
+			}
+		}
+
 	}
 
 }

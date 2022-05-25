@@ -1,6 +1,8 @@
 package br.com.foursys.fourcamp.fourstore.service;
 
 import java.util.HashMap;
+import java.util.List;
+
 import br.com.foursys.fourcamp.fourstore.data.ProductData;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
@@ -23,8 +25,8 @@ public class StockService {
         return "Adicionadas " + savedProduct;
 	}
 
-	public HashMap<Product, Integer> listAll() {
-		HashMap<Product, Integer> allProductsStocks = productData.findAll();
+	public List<Stock> listAll() {
+		List<Stock> allProductsStocks = productData.findAll();
 		return allProductsStocks;
 	}
 
@@ -71,7 +73,7 @@ public class StockService {
 		products.forEach((requestedProduct, requestedQuantity) -> {
 			String sku = requestedProduct.getSku();
 			Product product = productData.findBySku(sku);
-			Stock stock = new Stock(product, productData.getQuantity(sku) - requestedQuantity)
+			Stock stock = new Stock(product, productData.getQuantity(sku) - requestedQuantity);
 			productData.setQuantity(stock);
 		});
 
@@ -79,8 +81,17 @@ public class StockService {
 
 	//Boolean ou Exception?
 	public Boolean validateIndividualPurchase(Product product, Integer quantity) {
-		HashMap<Product, Integer> products = productData.findAll();
-		if (!products.containsKey(product) || products.get(product) < quantity) {
+		List<Stock> products = productData.findAll();
+		boolean contains = false;
+		int x = 0;
+		for (int i = 0; i < products.size(); i++) {
+			Product p = products.get(i).getProduct();
+			if (p.equals(product)) {
+				contains = true;
+				x = i;
+			}
+		}
+		if (!contains || products.get(x).getQuantity() < quantity) {
 			return false;
 		} else {
 			return true;
@@ -94,7 +105,9 @@ public class StockService {
     }
 	
 	private String setProduct(Product product, Integer quantity) {
-        return productData.save(product, quantity);
+		Stock stock = new Stock(product, quantity);
+        productData.save(stock);
+        return quantity + " unidades adicionadas com sucesso!";
     }
 	
 	public Product findBySku(String sku) throws ProductNotFoundException {

@@ -34,7 +34,8 @@ public class TransactionService {
     }
 	
     private Transaction setTransaction(Transaction transaction) {
-        return transactionData.save(transaction);
+        transactionData.save(transaction);
+        return transaction;
     }
 }
 

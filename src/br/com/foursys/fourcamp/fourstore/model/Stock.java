@@ -18,6 +18,10 @@ public class Stock {
 		return quantity;
 	}
 
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
 	
 	
 }

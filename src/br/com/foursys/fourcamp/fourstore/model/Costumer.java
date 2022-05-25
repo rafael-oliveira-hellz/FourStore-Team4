@@ -5,20 +5,18 @@ import br.com.foursys.fourcamp.fourstore.enums.PaymentMethodEnum;
 public class Costumer {
 	private String name;
 	private String cpf;
-	private PaymentMethodEnum paymentMethod;
+	private String paymentMethod;
 	
-	public Costumer(String name, String cpf, PaymentMethodEnum paymentMethod) {
+	public Costumer(String name, String cpf, Integer paymentMethod) {
 		this.name = name;
 		this.cpf = cpf;
-		this.paymentMethod = paymentMethod;
+		this.paymentMethod = paymentMethod.getDescription();
 	}
 
-	public Costumer(String name, PaymentMethodEnum paymentMethod) {
+	public Costumer(String name, Integer paymentMethod) {
 		this.name = name;
-		this.paymentMethod = paymentMethod;
+		this.paymentMethod = paymentMethod.getDescription();
 	}
-	
-	public Costumer () {}
 
 	public String getName() {
 		return name;
@@ -36,11 +34,11 @@ public class Costumer {
 		this.cpf = cpf;
 	}
 
-	public PaymentMethodEnum getPaymentMethod() {
+	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 
-	public void setPaymentMethod(PaymentMethodEnum paymentMethod) {
+	public void setPaymentMethod(Integer paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 

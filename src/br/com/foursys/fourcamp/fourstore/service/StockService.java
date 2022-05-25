@@ -6,6 +6,7 @@ import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 import br.com.foursys.fourcamp.fourstore.model.Product;
+import br.com.foursys.fourcamp.fourstore.model.Stock;
 import br.com.foursys.fourcamp.fourstore.model.Transaction;
 
 public class StockService {
@@ -62,14 +63,16 @@ public class StockService {
 
 	public void reStock(String sku, Integer quantity) {
 		Product product = productData.findBySku(sku);
-		productData.setQuantity(product, productData.getQuantity(sku) + quantity);
+		Stock stock = new Stock(product, productData.getQuantity(sku) + quantity);
+		productData.setQuantity(stock);
 	}
 
 	public void checkStock(HashMap<Product, Integer> products) throws StockInsufficientException {
 		products.forEach((requestedProduct, requestedQuantity) -> {
 			String sku = requestedProduct.getSku();
 			Product product = productData.findBySku(sku);
-			productData.setQuantity(product, productData.getQuantity(sku) - requestedQuantity);
+			Stock stock = new Stock(product, productData.getQuantity(sku) - requestedQuantity)
+			productData.setQuantity(stock);
 		});
 
 	}

@@ -1,6 +1,5 @@
 package br.com.foursys.fourcamp.fourstore.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;

@@ -19,9 +19,13 @@ public class TransactionService {
 
     
     public String createTransaction(Transaction transaction) throws StockInsufficientException, ProductNotFoundException {
-        stockService.validatePurchase(transaction);
-        Transaction savedTransaction = setTransaction(transaction);
-        return createMessageResponse(savedTransaction.getId(), " criada.");
+        if (stockService.validatePurchase(transaction)) {
+        	Transaction savedTransaction = setTransaction(transaction);
+            return createMessageResponse(savedTransaction.getId(), " criada.");
+        } else {
+        	return "Transação não criada!";
+        }
+        
     }
     
     public List<Transaction> listAll() {

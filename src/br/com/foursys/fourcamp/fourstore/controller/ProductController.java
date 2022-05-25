@@ -1,10 +1,12 @@
 package br.com.foursys.fourcamp.fourstore.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.model.Product;
+import br.com.foursys.fourcamp.fourstore.model.Stock;
 import br.com.foursys.fourcamp.fourstore.service.StockService;
 
 public class ProductController {
@@ -14,9 +16,9 @@ public class ProductController {
 		this.stock = new StockService();
 	}
 
-	public boolean validateSku(String sku, int quantity) {
-
-		return false;
+	public boolean validatePrePurchase(String sku, int quantity) throws ProductNotFoundException {
+		return stock.validateIndividualPurchase(sku, quantity);
+		
 	}
 
 	public String insertProduct(String sku, String description, int quantity, double buyPrice, double sellPrice)
@@ -36,7 +38,7 @@ public class ProductController {
 	}
 
 	public String listAll() {
-		HashMap<Product, Integer> list = stock.listAll();
+		 List<Stock> list = stock.listAll();
 		String txt = "";
 		for (HashMap.Entry<Product, Integer> product : list.entrySet()) {
 			txt += product.getKey().toString() + ". quantidade: " + product.getValue() + "\n";

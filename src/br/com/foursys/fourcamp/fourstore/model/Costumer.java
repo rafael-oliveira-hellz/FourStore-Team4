@@ -10,12 +10,12 @@ public class Costumer {
 	public Costumer(String name, String cpf, Integer paymentMethod) {
 		this.name = name;
 		this.cpf = cpf;
-		this.paymentMethod = paymentMethod.getDescription();
+		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 	}
 
 	public Costumer(String name, Integer paymentMethod) {
 		this.name = name;
-		this.paymentMethod = paymentMethod.getDescription();
+		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 	}
 
 	public String getName() {
@@ -39,7 +39,7 @@ public class Costumer {
 	}
 
 	public void setPaymentMethod(Integer paymentMethod) {
-		this.paymentMethod = paymentMethod;
+		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 	}
 
 	@Override

@@ -80,10 +80,11 @@ public class StockService {
 	}
 
 	//Boolean ou Exception?
-	public Boolean validateIndividualPurchase(Product product, Integer quantity) {
+	public Boolean validateIndividualPurchase(String sku, Integer quantity) throws ProductNotFoundException {
 		List<Stock> products = productData.findAll();
 		boolean contains = false;
 		int x = 0;
+		Product product = findBySku(sku);
 		for (int i = 0; i < products.size(); i++) {
 			Product p = products.get(i).getProduct();
 			if (p.equals(product)) {

@@ -1,5 +1,9 @@
 package br.com.foursys.fourcamp.fourstore.enums;
 
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+
 public enum PaymentMethodEnum {
 
 	BILLET("Boleto à vista", 1),
@@ -23,5 +27,23 @@ public enum PaymentMethodEnum {
 
 	public Integer getPaymentMethodId() {
 		return paymentMethodId;
+	}
+
+	private static final Map<String, PaymentMethodEnum> Lookup = new HashMap<String, PaymentMethodEnum>();
+
+	static {
+		for (PaymentMethodEnum keyValue : EnumSet.allOf(PaymentMethodEnum.class))
+			Lookup.put(keyValue.getPaymentMethod(), keyValue);
+	}
+
+	public static PaymentMethodEnum get(String paymentMethod) {
+		return Lookup.get(paymentMethod);
+	}
+
+	public static PaymentMethodEnum getByPaymentMethodId(Integer paymentMethodId) {
+		for (PaymentMethodEnum keyValue : EnumSet.allOf(PaymentMethodEnum.class))
+			if (keyValue.getPaymentMethodId().equals(paymentMethodId))
+				return keyValue;
+		return null;
 	}
 }

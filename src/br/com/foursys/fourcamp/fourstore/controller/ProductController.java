@@ -40,8 +40,8 @@ public class ProductController {
 	public String listAll() {
 		 List<Stock> list = stock.listAll();
 		String txt = "";
-		for (HashMap.Entry<Product, Integer> product : list.entrySet()) {
-			txt += product.getKey().toString() + ". quantidade: " + product.getValue() + "\n";
+		for (int i = 0; i < list.size(); i++) {
+			txt += list.get(i).getProduct().toString() + ". quantidade: " + list.get(i).getQuantity() + "\n";
 		}
 		return txt;
 	}

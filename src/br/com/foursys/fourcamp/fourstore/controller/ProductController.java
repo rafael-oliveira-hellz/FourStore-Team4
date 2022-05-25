@@ -24,7 +24,7 @@ public class ProductController {
 		if (sku.length() != 13) {
 			return " SKU inválida ";
 		}
-		if (description == null || quantity <= 0 || buyPrice <= 0 || sellPrice <= 0) {
+		if (description == null || quantity <= 0 || buyPrice <= 0.0 || sellPrice <= 0.0) {
 			return " Digite os valores corretos de acordo com cada campo ";
 		}
 		Product product = new Product(sku, description, buyPrice, sellPrice);
@@ -39,7 +39,7 @@ public class ProductController {
 		HashMap<Product, Integer> list = stock.listAll();
 		String txt = "";
 		for (HashMap.Entry<Product, Integer> product : list.entrySet()) {
-			txt += product.toString() + "Quantidade: " + list.get(product) + "\n";
+			txt += product.getKey().toString() + ". quantidade: " + product.getValue() + "\n";
 		}
 		return txt;
 	}

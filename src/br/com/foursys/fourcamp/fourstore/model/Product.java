@@ -3,6 +3,7 @@ package br.com.foursys.fourcamp.fourstore.model;
 import br.com.foursys.fourcamp.fourstore.enums.CategoryEnum;
 import br.com.foursys.fourcamp.fourstore.enums.ColorEnum;
 import br.com.foursys.fourcamp.fourstore.enums.DepartmentEnum;
+import br.com.foursys.fourcamp.fourstore.enums.SeasonEnum;
 import br.com.foursys.fourcamp.fourstore.enums.SizeEnum;
 import br.com.foursys.fourcamp.fourstore.enums.TypeOfMerchandiseEnum;
 
@@ -13,6 +14,7 @@ public class Product {
 	private String size;
 	private String color;
 	private String category;
+	private String season;
 	private String department;
 	private Double buyPrice;
 	private Double  sellPrice;
@@ -30,35 +32,30 @@ public class Product {
 		this.brand = sku.substring(0, 3);
 		this.size = SizeEnum.get(sku.substring(3, 5)).getDescription();
 		this.category = CategoryEnum.get(sku.substring(5, 7)).getDescription();
-		this.type = TypeOfMerchandiseEnum.get(sku.substring(7, 9)).getDescription();
+		this.season = SeasonEnum.get(sku.substring(7, 9)).getDescription();
 		this.department = DepartmentEnum.get(sku.substring(9, 11)).getDescription();
-		this.color = ColorEnum.get(sku.substring(11, 13)).getDescription();
+		this.type = TypeOfMerchandiseEnum.get(sku.substring(11, 14)).getDescription();
+		this.color = ColorEnum.get(sku.substring(14, 16)).getDescription();
 	}
-
+	
 	public Double getBuyPrice() {
 		return buyPrice;
 	}
-
 	public void setBuyPrice(Double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
-
 	public Double getSellPrice() {
 		return sellPrice;
 	}
-
 	public void setSellPrice(Double sellPrice) {
 		this.sellPrice = sellPrice;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public String getType() {
 		return type;
 	}
@@ -95,15 +92,20 @@ public class Product {
 	public String getBrand() {
 		return brand;
 	}
-
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public void setSeason(String season) {
+		this.season = season;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [sku=" + sku + ", type=" + type + ", size=" + size + ", color=" + color + ", category="
-				+ category + ", department=" + department + ", Price=" + sellPrice + ", description=" + description
+		return "Product [sku: " + sku + ", type: " + type + ", size: " + size + ", color: " + color + ", category: "
+				+ category + ", Estação: " + season + ", department: " + department + ", Price: " + sellPrice + ", description: " + description
 				+ "]";
 	}
 	

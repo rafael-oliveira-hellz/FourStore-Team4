@@ -116,7 +116,7 @@ public class MainMenu {
 					StockMenuCommunication.listAllStock();
 					break;
 				case 4:
-					StockMenuCommunication.updateProduct();
+					stockMenuUpdate();
 					break;
 				case 5:
 					break;
@@ -178,6 +178,44 @@ public class MainMenu {
 			} catch (InputMismatchException e) {
 				validate = false;
 			}
+		}
+
+	}
+	
+	private void stockMenuUpdate() throws InvalidSellValueException {
+		Integer option;
+		boolean validate = false;
+
+		while (!validate) {
+			System.out.println();
+			System.out.println("########  ATUALIZAR ESTOQUE ########");
+			System.out.println("+------------------------------+");
+			System.out.println("| 1 - ATUALIZAR QUANTIDADE     |");
+			System.out.println("| 2 - ATUALIZAR PREÇO          |");
+			System.out.println("+------------------------------+");
+			System.out.println("| 6 - SAIR                     |");
+			System.out.println("+------------------------------+");
+			System.out.print("\nOpção: ");
+
+			try {
+				option = sc.nextInt();
+				switch (option) {
+				case 1:
+					StockMenuCommunication.createProduct();
+					break;
+				case 2:
+					StockMenuCommunication.searchForSku();
+					break;
+				case default:
+					System.out.println("Opção inválida!");
+					break;
+				}
+
+				validate = true;
+			} catch (InputMismatchException e) {
+				validate = false;
+			}
+
 		}
 
 	}

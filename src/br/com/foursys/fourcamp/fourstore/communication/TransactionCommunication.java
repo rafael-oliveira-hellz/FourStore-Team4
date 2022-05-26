@@ -101,14 +101,17 @@ public class TransactionCommunication {
 		}
 
 		Integer payment = 0;
-		Integer paymentData = 0;
+		Integer paymentData = 99999999;
 
 		validate = false;
 
+		
+		
 		while (!validate) {
 			try {
 				System.out.print("Escolha um método pelo dígito: ");
 				payment = Integer.parseInt(sc.nextLine());
+				while (!validate) {
 				if (payment.equals(1) || payment.equals(2) || payment.equals(6)) {
 					payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
 					validate = true;
@@ -116,12 +119,13 @@ public class TransactionCommunication {
 					payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
 					System.out.println("Digite o número de seu cartão ou pix: ");
 					Integer paymentDataToTest = Integer.parseInt(sc.nextLine());
-					if (!paymentDataToTest.equals(0)) {
+					if (paymentDataToTest > 100000000) {
 						paymentData = paymentDataToTest;
 						validate = true;
 					} else {
-						System.err.println("Digite um número válido: ");
+						System.err.println("O número deve ter pelo menos 9 dígitos: ");
 					}
+				}
 					
 				}
 			} catch (Exception e) {

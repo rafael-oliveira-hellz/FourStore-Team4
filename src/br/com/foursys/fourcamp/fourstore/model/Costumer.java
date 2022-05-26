@@ -55,14 +55,31 @@ public class Costumer {
 
 	@Override
 	public String toString() {
-		if (paymentData != 0) {
-		return "Cliente " + name + " com o cpf " + cpf + " cartão/pix " + paymentData;
+		String message = (cpf == null) ? hasNoCpf() : hasCpf();
+		return message;
+	}
+
+	public String hasNoCpf() {
+		if (paymentData != 99999999) {
+			return "Cliente " + name + " com o cpf " + cpf + " cartão/pix " + paymentData;
+			} else {
+				return "Cliente " + name + " com o cpf " + cpf + ", pagou à vista";
+			}
+	}
+
+	public String hasCpf() {
+		if (paymentData != 99999999) {
+			return "Cliente " + name + " cartão/pix " + paymentData;
 		} else {
-			return "Cliente " + name + " com o cpf " + cpf + ", pagou à vista";
+				return "Cliente " + name + ", pagou à vista";
 		}
 	}
+		
+	}
+
 	
 	
-}
+	
+
 
 

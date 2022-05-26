@@ -15,14 +15,15 @@ public class ProductController {
 		this.stock = new StockService();
 	}
 
-	public boolean validatePrePurchase(String sku, int quantity) throws ProductNotFoundException {
-		return stock.validateIndividualPurchase(sku, quantity);
+	public Stock validatePrePurchase(String sku, int quantity) throws ProductNotFoundException {
+		Product product = stock.validateIndividualPurchase(sku, quantity);
+		return new Stock(product, quantity);
 		
 	}
 
 	public String insertProduct(String sku, String description, int quantity, double buyPrice, double sellPrice)
 			throws InvalidSellValueException {
-		if (sku.length() != 13) {
+		if (sku.length() != 16) {
 			return " SKU inválida ";
 		}
 		if (description == null || quantity <= 0 || buyPrice <= 0.0 || sellPrice <= 0.0) {

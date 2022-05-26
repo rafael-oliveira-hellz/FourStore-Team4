@@ -21,6 +21,8 @@ public class Product {
 	private String description;
 	
 	
+	public Product() {}
+	
 	public Product (String sku, String description, double buyPrice, double sellPrice) {
 		this.description = description;
 		this.buyPrice = buyPrice;

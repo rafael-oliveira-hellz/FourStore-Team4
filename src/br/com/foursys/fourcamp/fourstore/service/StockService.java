@@ -80,14 +80,14 @@ public class StockService {
 	}
 
 	//Fiz diversos testes, mas não tenho 100% de certeza
-	public Boolean validateIndividualPurchase(String sku, Integer quantity) throws ProductNotFoundException {
+	public Product validateIndividualPurchase(String sku, Integer quantity) throws ProductNotFoundException {
 		List<Stock> products = productData.findAll();
 		Product product = verifyIfExists(sku);
 		for (Stock stock : products) {
 			if (stock.getProduct().equals(product) && stock.getQuantity() > quantity) {
-				return true;
+				return product;
 			} 
-		} return false;
+		} return null;
 	}
 		
 	public void validateProfit(Product product) throws InvalidSellValueException {

@@ -32,8 +32,31 @@ public class TransactionController {
 		return txt;
 	}
 
-	public String purchase(List<Stock> list, String name, String cpf, Integer payment) {
-		return null;
+	public String purchase(List<Stock> stocks, String name, String cpf, Integer payment) throws StockInsufficientException, ProductNotFoundException {
+		Costumer costumer = new Costumer(name, cpf, payment);
+		Transaction transaction = new Transaction(costumer);
+		for (Stock stock : stocks) {
+			Product product = stock.getProduct();
+			Integer quantity = stock.getQuantity();
+			transaction.addProducts(product, quantity);
+		}
+		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
+		String txt = transactionService.createTransaction(transaction);
+		txt += "Compra realizada com sucesso!\nValor total: "+ totalPrice;
+		return txt;
 	}
+	
+	public String listAll() {
+		Double totalProfit = 0.0;
+		String totalList = "";
+		List<Transaction> list = transactionService.listAll();
+		for (Transaction transaction : list) {
+			totalList += transaction.toString() + "\n";
+			totalProfit += transaction.getTotalPrice();
+		}
+		totalList += String.format("Soma do valor das vendas: R$ %.2f", totalProfit); 
+		return totalList;
+	}
+	
 
 }

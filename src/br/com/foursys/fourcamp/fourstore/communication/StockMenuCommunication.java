@@ -256,7 +256,7 @@ public class StockMenuCommunication {
 	public static void updateProductPrice() {
 		boolean validate = false;
 		while (!validate) {
-			System.out.println("\nAtualizar Quantidade do Estoque\n");
+			System.out.println("\nAtualizar Preço do Estoque\n");
 			try {
 				System.out.print("Digite o SKU do produto: ");
 				String sku = sc.nextLine();

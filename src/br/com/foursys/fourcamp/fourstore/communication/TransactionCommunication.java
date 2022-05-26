@@ -106,6 +106,6 @@ public class TransactionCommunication {
 	}
 
 	public static void listTransactions() {
-
+		System.out.println(transactionController.listAll());
 	}
 }

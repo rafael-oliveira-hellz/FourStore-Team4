@@ -18,8 +18,8 @@ public class TransactionController {
 		this.transactionService = new TransactionService();
 	}
 
-	public String purchase(List<Stock> stocks, String name, Integer payment) throws StockInsufficientException, ProductNotFoundException {
-		Costumer costumer = new Costumer(name, payment);
+	public String purchase(List<Stock> stocks, String name, Integer payment, Integer paymentData) throws StockInsufficientException, ProductNotFoundException {
+		Costumer costumer = new Costumer(name, payment, paymentData);
 		Transaction transaction = new Transaction(costumer);
 		for (Stock stock : stocks) {
 			Product product = stock.getProduct();
@@ -34,8 +34,8 @@ public class TransactionController {
 		return txt;
 	}
 
-	public String purchase(List<Stock> stocks, String name, String cpf, Integer payment) throws StockInsufficientException, ProductNotFoundException {
-		Costumer costumer = new Costumer(name, cpf, payment);
+	public String purchase(List<Stock> stocks, String name, String cpf, Integer payment, Integer paymentData) throws StockInsufficientException, ProductNotFoundException {
+		Costumer costumer = new Costumer(name, cpf, payment, paymentData);
 		Transaction transaction = new Transaction(costumer);
 		for (Stock stock : stocks) {
 			Product product = stock.getProduct();

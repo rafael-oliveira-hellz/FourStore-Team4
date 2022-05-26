@@ -7,6 +7,7 @@ import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
+import br.com.foursys.fourcamp.fourstore.utils.RunTime;
 
 public class MainMenu {
 
@@ -65,7 +66,7 @@ public class MainMenu {
 				case "2" -> initialStock = stockMenu(initialStock);
 				default -> {
 					System.err.println("Digite uma opção válida");
-					ThreadDelay();
+					RunTime.ThreadDelay();
 				} 
 			}
 		}
@@ -191,14 +192,6 @@ public class MainMenu {
 
 		}
 
-	}
-	
-	public void ThreadDelay() {
-		try {
-			Thread.sleep(1L);
-		} catch (InterruptedException e) {
-			System.out.println("Nunca vai cair aqui");
-		}
 	}
 	
 	public void initialStock() throws InvalidSellValueException {

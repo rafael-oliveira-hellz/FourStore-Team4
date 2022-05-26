@@ -10,6 +10,7 @@ import br.com.foursys.fourcamp.fourstore.enums.PaymentMethodEnum;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 import br.com.foursys.fourcamp.fourstore.model.Stock;
+import br.com.foursys.fourcamp.fourstore.utils.RunTime;
 
 public class TransactionCommunication {
 	static Scanner sc = new Scanner(System.in);
@@ -77,13 +78,21 @@ public class TransactionCommunication {
 			char choice = sc.nextLine().charAt(0);
 
 			if (choice == 's' || choice == 'S') {
+				while(!validate) {
 				System.out.print("Digite o CPF: ");
 				cpf = sc.nextLine();
+				if (cpf.length() == 11) {
 				validate = true;
+				} else {
+					System.err.println("O cpf deve ter 11 números!");
+					RunTime.ThreadDelay();
+				}
+				}
 			} else if (choice == 'n' || choice == 'N') {
 				validate = true;
 			} else {
 				System.out.println("Opção inválida!");
+				
 			}
 		}
 
@@ -92,6 +101,7 @@ public class TransactionCommunication {
 		}
 
 		Integer payment = 0;
+		Integer paymentData = 0;
 
 		validate = false;
 
@@ -99,8 +109,21 @@ public class TransactionCommunication {
 			try {
 				System.out.print("Escolha um método pelo dígito: ");
 				payment = Integer.parseInt(sc.nextLine());
-				payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
-				validate = true;
+				if (payment.equals(1) || payment.equals(2) || payment.equals(6)) {
+					payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
+					validate = true;
+				} else {
+					payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
+					System.out.println("Digite o número de seu cartão ou pix: ");
+					Integer paymentDataToTest = Integer.parseInt(sc.nextLine());
+					if (!paymentDataToTest.equals(0)) {
+						paymentData = paymentDataToTest;
+						validate = true;
+					} else {
+						System.err.println("Digite um número válido: ");
+					}
+					
+				}
 			} catch (Exception e) {
 				System.out.println("Opção inválida!");
 				validate = false;
@@ -108,9 +131,9 @@ public class TransactionCommunication {
 		}
 		
 		if (cpf.equals("")) {
-			System.out.println(transactionController.purchase(cart, name, payment));
+			System.out.println(transactionController.purchase(cart, name, payment, paymentData));
 		} else {
-			System.out.println(transactionController.purchase(cart, name, cpf, payment));
+			System.out.println(transactionController.purchase(cart, name, cpf, payment, paymentData));
 		}
 	}
 

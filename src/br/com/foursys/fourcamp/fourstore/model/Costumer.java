@@ -6,16 +6,27 @@ public class Costumer {
 	private String name;
 	private String cpf;
 	private String paymentMethod;
+	private Integer paymentData;
 	
-	public Costumer(String name, String cpf, Integer paymentMethod) {
+	public Integer getPaymentData() {
+		return paymentData;
+	}
+
+	public void setPaymentData(Integer paymentData) {
+		this.paymentData = paymentData;
+	}
+
+	public Costumer(String name, String cpf, Integer paymentMethod, Integer paymentData) {
 		this.name = name;
 		this.cpf = cpf;
 		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
+		this.paymentData = paymentData;
 	}
 
-	public Costumer(String name, Integer paymentMethod) {
+	public Costumer(String name, Integer paymentMethod, Integer paymentData) {
 		this.name = name;
 		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
+		this.paymentData = paymentData;
 	}
 
 	public String getName() {
@@ -44,7 +55,11 @@ public class Costumer {
 
 	@Override
 	public String toString() {
-		return "Cliente " + name + " com o cpf=" + cpf;
+		if (paymentData != 0) {
+		return "Cliente " + name + " com o cpf " + cpf + " cartão/pix " + paymentData;
+		} else {
+			return "Cliente " + name + " com o cpf " + cpf + ", pagou à vista";
+		}
 	}
 	
 	

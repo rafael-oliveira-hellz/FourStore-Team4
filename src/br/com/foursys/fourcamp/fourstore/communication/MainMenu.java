@@ -191,7 +191,7 @@ public class MainMenu {
 			System.out.println("+------------------------------+");
 			System.out.println("| 1 - ATUALIZAR QUANTIDADE     |");
 			System.out.println("| 2 - ATUALIZAR PREÇO          |");
-			System.out.println("| 3 - ATUALIZAR PREÇO          |");
+			System.out.println("| 3 - EXCLUIR PRODUTO          |");
 			System.out.println("+------------------------------+");
 			System.out.println("| 6 - SAIR                     |");
 			System.out.println("+------------------------------+");

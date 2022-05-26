@@ -46,8 +46,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [products=" + products.toString() + ", constumer=" + constumer.toString() + ", totalPrice="
-				+ getTotalPrice() + "]";
+		return "Transação com id " + id + ": Cliente " + constumer.toString() + ", valor da venda "
+				+ String.format("R$%.2f", getTotalPrice());
 	}
 	
 }

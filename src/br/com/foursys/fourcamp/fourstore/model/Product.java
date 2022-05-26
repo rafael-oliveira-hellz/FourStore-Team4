@@ -108,9 +108,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [sku: " + sku + ", tipo: " + type + ", tamanho: " + size + ", cor: " + color + ", categoria: "
-				+ category + ", Estação: " + season + ", departamento: " + department + ", preço: " + sellPrice + ", descrição: " + description
-				+ "]";
+		return "Produto " + description + ", com Sku " + sku + " e preço de " + String.format("R$%.2f", sellPrice);
 	}
 	
 	@Override

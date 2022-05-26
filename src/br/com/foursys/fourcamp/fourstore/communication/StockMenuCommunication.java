@@ -280,17 +280,14 @@ public class StockMenuCommunication {
 		String sku = sc.nextLine();
 		boolean validate = false;
 		
-		while (!validate)
 		System.out.print("Deseja mesmo remover? S/N");
 		char option = sc.nextLine().charAt(0);
 		
 		if (option == 's' || option == 'S') {
 			System.out.println(productController.delete(sku));
 			validate = true;
-		} else if (option == 'n' || option == 'N') {
-			return;
 		} else {
-			System.err.println("Opção inválida!");
-		}
+			return;
+		} 
 	}
 }

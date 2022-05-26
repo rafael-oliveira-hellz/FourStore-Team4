@@ -103,7 +103,7 @@ public class MainMenu {
 			System.out.print("\nOpção: ");
 
 			try {
-				option = sc.nextInt();
+				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
 				case 1:
 					StockMenuCommunication.createProduct();
@@ -129,7 +129,7 @@ public class MainMenu {
 				}
 
 				validate = true;
-			} catch (InputMismatchException e) {
+			} catch (Exception e) {
 				validate = false;
 			}
 
@@ -154,7 +154,7 @@ public class MainMenu {
 			System.out.print("\nOpção: ");
 
 			try {
-				option = sc.nextInt();
+				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
 				case 1:
 					TransactionCommunication.purchase();
@@ -174,8 +174,8 @@ public class MainMenu {
 				}
 
 				validate = true;
-			} catch (InputMismatchException e) {
-				validate = false;
+			} catch (Exception e) {
+				continue;
 			}
 		}
 
@@ -193,12 +193,12 @@ public class MainMenu {
 			System.out.println("| 2 - ATUALIZAR PREÇO          |");
 			System.out.println("| 3 - EXCLUIR PRODUTO          |");
 			System.out.println("+------------------------------+");
-			System.out.println("| 6 - SAIR                     |");
+			System.out.println("| 4 - SAIR                     |");
 			System.out.println("+------------------------------+");
 			System.out.print("\nOpção: ");
 
 			try {
-				option = sc.nextInt();
+				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
 				case 1:
 					StockMenuCommunication.updateProductQuantity();
@@ -209,14 +209,16 @@ public class MainMenu {
 				case 3:
 					StockMenuCommunication.deleteProduct();
 					break;
+				case 4:
+					System.exit(0);
 				case default:
 					System.out.println("Opção inválida!");
 					break;
 				}
 
 				validate = true;
-			} catch (InputMismatchException e) {
-				validate = false;
+			} catch (Exception e) {
+				continue;
 			}
 
 		}

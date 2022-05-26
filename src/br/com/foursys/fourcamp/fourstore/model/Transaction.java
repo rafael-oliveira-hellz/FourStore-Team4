@@ -46,7 +46,7 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [products=" + products.toString() + ", constumer=" + constumer + ", totalPrice="
+		return "Transaction [products=" + products.toString() + ", constumer=" + constumer.toString() + ", totalPrice="
 				+ totalPrice + "]";
 	}
 	

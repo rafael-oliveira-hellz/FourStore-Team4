@@ -108,8 +108,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [sku: " + sku + ", type: " + type + ", size: " + size + ", color: " + color + ", category: "
-				+ category + ", Estação: " + season + ", department: " + department + ", Price: " + sellPrice + ", description: " + description
+		return "Product [sku: " + sku + ", tipo: " + type + ", tamanho: " + size + ", cor: " + color + ", categoria: "
+				+ category + ", Estação: " + season + ", departamento: " + department + ", preço: " + sellPrice + ", descrição: " + description
 				+ "]";
 	}
 	

@@ -11,6 +11,7 @@ import br.com.foursys.fourcamp.fourstore.enums.SeasonEnum;
 import br.com.foursys.fourcamp.fourstore.enums.SizeEnum;
 import br.com.foursys.fourcamp.fourstore.enums.TypeOfMerchandiseEnum;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
+import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
 
 public class StockMenuCommunication {
 	static ProductController productController = new ProductController();
@@ -31,6 +32,7 @@ public class StockMenuCommunication {
 			}
 
 			try {
+				sc.nextLine();
 				System.out.print("Escolha o dígito de uma marca: ");
 				firstOption = sc.nextInt();
 
@@ -223,8 +225,10 @@ public class StockMenuCommunication {
 		System.out.println(productController.insertProduct(sku, description, quantity, buyPrice, sellPrice));
 	}
 
-	public static void searchForSku() {
-		
+	public static void searchForSku() throws ProductNotFoundException {
+		System.out.println("Informe o SKU do produto: ");
+		String sku = sc.next();
+		System.out.println(productController.findSku(sku));
 	}
 
 	public static void listAllStock() {

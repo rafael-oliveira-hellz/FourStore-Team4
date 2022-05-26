@@ -102,10 +102,8 @@ public class StockService {
         return quantity + " unidades adicionadas com sucesso!";
     }
 	
-	/*
-	Verificar se roda perfeitamente sem
 	public Product findBySku(String sku) throws ProductNotFoundException {
         Product product = verifyIfExists(sku);
         return product;
-    }*/
+    }
 }

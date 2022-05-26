@@ -182,7 +182,7 @@ public class MainMenu {
 
 	}
 	
-	private void stockMenuUpdate() throws InvalidSellValueException {
+	private void stockMenuUpdate() throws InvalidSellValueException, ProductNotFoundException {
 		Integer option;
 		boolean validate = false;
 

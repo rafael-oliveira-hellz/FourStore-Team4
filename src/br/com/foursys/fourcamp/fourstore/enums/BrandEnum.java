@@ -5,32 +5,39 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum BrandEnum {
-    KOSAIR("KSR", "Kosair"),
-    HERING("HRG", "Hering"),
-    KARL("KRL", "Karl"),
-    MALWEE("MLW", "Malwee"),
-    CALVINKLEIN("CKL", "Calvin Klein"),
-    LACOSTE("LCO", "Lacoste"),
-    DIESEL("DSL", "Diesel"),
-    NIKE("NKE", "Nike"),
-    ADIDAS("ADI", "Adidas"),
-    PUMA("PMA", "Puma"),
-    OLYMPIKUS("OLP", "Olympikus"),
-    OBOTICARIO("OBT", "O Boticário"),
-    NATURA("NTR", "Natura"),
-    AVON("AVN", "Avon"),
-    CHANEL5("CNL", "Chanel #5"),
-    ABIPROJECT("ABI", "Abi Project"),
-    BOSS("BOS", "Hugo Boss"),
-    REVAMPP("RVP", "Revamp"),
-    NAAU("NAA", "NAAU"),
-    ELEPHANT("ELP", "Elephant"),
-    HIGHERSTORE("HRS", "Higher Store"),
-    SANTABOUTIQUE("STB", "Santa Boutique");
+	KOSAIR("KSR", "Kosair", 1),
+    HERING("HRG", "Hering", 2),
+    KARL("KRL", "Karl", 3),
+    MALWEE("MLW", "Malwee", 4),
+    CALVINKLEIN("CKL", "Calvin Klein", 5),
+    LACOSTE("LCO", "Lacoste", 6),
+    DIESEL("DSL", "Diesel", 7),
+    NIKE("NKE", "Nike", 8),
+    ADIDAS("ADI", "Adidas", 9),
+    PUMA("PMA", "Puma", 10),
+    OLYMPIKUS("OLP", "Olympikus", 11),
+    OBOTICARIO("OBT", "O Boticário", 12),
+    NATURA("NTR", "Natura", 13),
+    AVON("AVN", "Avon", 14),
+    CHANEL5("CNL", "Chanel #5", 15),
+    ABIPROJECT("ABI", "Abi Project", 16),
+    BOSS("BOS", "Hugo Boss", 17),
+    REVAMPP("RVP", "Revamp", 18),
+    NAAU("NAA", "NAAU", 19),
+    ELEPHANT("ELP", "Elephant", 20),
+    HIGHERSTORE("HRS", "Higher Store", 21),
+    SANTABOUTIQUE("STB", "Santa Boutique", 22);
 
-    public String key;
-    public String description;
+	private String key;
+    private String description;
+    private Integer option;
 
+    BrandEnum(String key, String description, int option) {
+    	this.key = key;
+    	this.description = description;
+    	this.option = option;
+    }
+    
     public String getKey() {
         return key;
     }
@@ -39,12 +46,12 @@ public enum BrandEnum {
         return description;
     }
 
-    BrandEnum(String key, String description) {
-        this.key = key;
-        this.description = description;
-    }
 
-    private static final Map<String, BrandEnum> Lookup = new HashMap<String, BrandEnum>();
+    public Integer getOption() {
+		return option;
+	}
+
+	private static final Map<String, BrandEnum> Lookup = new HashMap<String, BrandEnum>();
 
     static {
         for (BrandEnum keyValue : EnumSet.allOf(BrandEnum.class))

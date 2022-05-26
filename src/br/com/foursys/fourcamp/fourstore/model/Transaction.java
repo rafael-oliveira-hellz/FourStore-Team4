@@ -29,14 +29,14 @@ public class Transaction {
 		return products;
 	}
 
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotalPrice() {
+		products.forEach((key, value) -> {
+			this.totalPrice += key.getSellPrice() * value;			
+		});
+		
 	}
 
 	public Double getTotalPrice() {		
-		products.forEach((key, value) -> {
-			totalPrice += key.getSellPrice() * value;			
-		});
 		return totalPrice;
 	}
 

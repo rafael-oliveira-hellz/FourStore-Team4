@@ -11,8 +11,8 @@ public class TransactionData implements DataInterface {
 	public static List<Transaction> list = new ArrayList<Transaction>();
 
 	@Override
-	public void save(Object transaction) {
-		list.add((Transaction)transaction);
+	public void save(Object object) {
+		list.add((Transaction)object);
 	}
 
 	@Override

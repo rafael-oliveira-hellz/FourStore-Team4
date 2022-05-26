@@ -34,7 +34,7 @@ public class TransactionCommunication {
 				} catch (Exception e) {
 					System.out.println("Quantidade inválida!");
 				}
-				
+
 				try {
 					Stock stock = productController.validatePrePurchase(sku, quantity);
 					if (stock != null) {
@@ -48,7 +48,6 @@ public class TransactionCommunication {
 					System.out.println("Quantidade insuficiente ou produto não encontrado!");
 				}
 			}
-				
 
 			System.out.print("Deseja continuar? S/N ");
 			option = sc.nextLine();
@@ -60,21 +59,21 @@ public class TransactionCommunication {
 			System.out.println(stock.toString());
 			totalPrice += stock.getProduct().getSellPrice() * stock.getQuantity();
 		}
-		
+
 		if (totalPrice == 0.0) {
 			return;
 		}
-		
+
 		System.out.println("Preço total: " + totalPrice);
 
-		System.out.println("\nDigite o nome do cliente: ");
+		System.out.print("\nDigite o nome do cliente: ");
 		String name = sc.nextLine();
 
 		boolean validate = false;
 		String cpf = "";
 
 		while (!validate) {
-			System.out.println("\nDeseja inserir o cpf? S/N");
+			System.out.print("\nDeseja inserir o cpf? S/N ");
 			char choice = sc.nextLine().charAt(0);
 
 			if (choice == 's' || choice == 'S') {
@@ -94,14 +93,20 @@ public class TransactionCommunication {
 
 		Integer payment = 0;
 
-		try {
-			System.out.print("Escolha um método pelo dígito: ");
-			payment = Integer.parseInt(sc.nextLine());
-			PaymentMethodEnum.getByPaymentMethodId(payment);
-		} catch (Exception e) {
-			System.out.println("Opção inválida!");
-		}
+		validate = false;
 
+		while (!validate) {
+			try {
+				System.out.print("Escolha um método pelo dígito: ");
+				payment = Integer.parseInt(sc.nextLine());
+				payment = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethodId();
+				validate = true;
+			} catch (Exception e) {
+				System.out.println("Opção inválida!");
+				validate = false;
+			}
+		}
+		
 		if (cpf.equals("")) {
 			System.out.println(transactionController.purchase(cart, name, payment));
 		} else {

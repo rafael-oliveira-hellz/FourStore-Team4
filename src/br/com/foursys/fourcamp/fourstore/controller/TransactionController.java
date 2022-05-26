@@ -26,9 +26,11 @@ public class TransactionController {
 			Integer quantity = stock.getQuantity();
 			transaction.addProducts(product, quantity);
 		}
-		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
+
 		String txt = transactionService.createTransaction(transaction);
-		txt += "Compra realizada com sucesso!\nValor total: "+ totalPrice;
+		transaction.setTotalPrice();
+		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
+		txt += "\nCompra realizada com sucesso!\nValor total: "+ totalPrice;
 		return txt;
 	}
 
@@ -52,6 +54,7 @@ public class TransactionController {
 		List<Transaction> list = transactionService.listAll();
 		for (Transaction transaction : list) {
 			totalList += transaction.toString() + "\n";
+			transaction.setTotalPrice();
 			totalProfit += transaction.getTotalPrice();
 		}
 		totalList += String.format("Soma do valor das vendas: R$ %.2f", totalProfit); 

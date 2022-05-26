@@ -53,6 +53,10 @@ public class ProductController {
 
 	public String update(String sku, Integer quantity) throws ProductNotFoundException {
 		Product product = stock.verifyIfExists(sku);
+		if (quantity <= 0) {
+			return "Digite uma quantidade maior que 0";
+		}
+		
 		if (product == null) {
 			return " Produto não encontrado!";
 		} else {

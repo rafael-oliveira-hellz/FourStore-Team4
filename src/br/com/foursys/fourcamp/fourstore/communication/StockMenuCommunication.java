@@ -1,5 +1,6 @@
 package br.com.foursys.fourcamp.fourstore.communication;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import br.com.foursys.fourcamp.fourstore.controller.ProductController;
@@ -19,7 +20,8 @@ public class StockMenuCommunication {
 	public static void createProduct() throws InvalidSellValueException {
 		String sku = "";
 		String optionString = "";
-		Integer option;
+		Integer firstOption;
+		String option;
 		boolean validate = false;
 
 		while (!validate) {
@@ -31,9 +33,9 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de uma marca: ");
-				option = sc.nextInt();
+				firstOption = sc.nextInt();
 
-				optionString = BrandEnum.getByOption(option).getKey();
+				optionString = BrandEnum.getByOption(firstOption).getKey();
 
 				validate = true;
 			} catch (Exception e) {
@@ -54,7 +56,8 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de um tamanho: ");
-				option = sc.nextInt();
+				sc.nextLine();
+				option = sc.nextLine();
 
 				optionString = SizeEnum.get(option.toString()).getKey();
 
@@ -77,7 +80,7 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de uma categoria: ");
-				option = sc.nextInt();
+				option = sc.nextLine();
 
 				optionString = CategoryEnum.get(option.toString()).getKey();
 
@@ -100,7 +103,7 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de uma estação: ");
-				option = sc.nextInt();
+				option = sc.nextLine();
 
 				optionString = SeasonEnum.get(option.toString()).getKey();
 
@@ -123,7 +126,7 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de um departamento: ");
-				option = sc.nextInt();
+				option = sc.nextLine();
 
 				optionString = DepartmentEnum.get(option.toString()).getKey();
 
@@ -146,7 +149,7 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de um tipo: ");
-				option = sc.nextInt();
+				option = sc.nextLine();
 
 				optionString = TypeOfMerchandiseEnum.get(option.toString()).getKey();
 
@@ -169,7 +172,7 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de uma cor: ");
-				option = sc.nextInt();
+				option = sc.nextLine();
 
 				optionString = ColorEnum.get(option.toString()).getKey();
 
@@ -190,7 +193,7 @@ public class StockMenuCommunication {
 				System.out.print("Digite a quantidade a ser adicionada: ");
 				quantity = sc.nextInt();
 				validate = true;
-			} catch (Exception e) {
+			} catch (InputMismatchException e) {
 				System.out.println("Quantidade inválida");
 				continue;
 			}

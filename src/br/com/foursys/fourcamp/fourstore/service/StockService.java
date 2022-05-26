@@ -49,7 +49,7 @@ public class StockService {
         productData.deleteBySku(sku);
     }
 	
-	private Product verifyIfExists(String sku) throws ProductNotFoundException {
+	public Product verifyIfExists(String sku) throws ProductNotFoundException {
     	if (productData.findBySku(sku).equals(null)) {
     		throw new ProductNotFoundException(sku);
     	} else {
@@ -79,26 +79,17 @@ public class StockService {
 
 	}
 
-	//Boolean ou Exception?
+	//Fiz diversos testes, mas não tenho 100% de certeza
 	public Boolean validateIndividualPurchase(String sku, Integer quantity) throws ProductNotFoundException {
 		List<Stock> products = productData.findAll();
-		boolean contains = false;
-		int x = 0;
-		Product product = findBySku(sku);
-		for (int i = 0; i < products.size(); i++) {
-			Product p = products.get(i).getProduct();
-			if (p.equals(product)) {
-				contains = true;
-				x = i;
-			}
-		}
-		if (!contains || products.get(x).getQuantity() < quantity) {
-			return false;
-		} else {
-			return true;
-		}
+		Product product = verifyIfExists(sku);
+		for (Stock stock : products) {
+			if (stock.getProduct().equals(product) && stock.getQuantity() > quantity) {
+				return true;
+			} 
+		} return false;
 	}
-
+		
 	public void validateProfit(Product product) throws InvalidSellValueException {
     	if ((product.getBuyPrice() * 1.25) > product.getSellPrice()) { 
     		throw new InvalidSellValueException();
@@ -111,8 +102,10 @@ public class StockService {
         return quantity + " unidades adicionadas com sucesso!";
     }
 	
+	/*
+	Verificar se roda perfeitamente sem
 	public Product findBySku(String sku) throws ProductNotFoundException {
         Product product = verifyIfExists(sku);
         return product;
-    }
+    }*/
 }

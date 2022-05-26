@@ -18,15 +18,15 @@ public class TransactionController {
 		this.transactionService = new TransactionService();
 	}
 
-	public String purchase(List<Stock> list, String name, Integer payment) throws StockInsufficientException, ProductNotFoundException {
+	public String purchase(List<Stock> stocks, String name, Integer payment) throws StockInsufficientException, ProductNotFoundException {
 		Costumer costumer = new Costumer(name, payment);
 		Transaction transaction = new Transaction(costumer);
-		for (int x = 0; x < list.size(); x++) {
-			Product product = list.get(x).getProduct();
-			Integer quantity = list.get(x).getQuantity();
+		for (Stock stock : stocks) {
+			Product product = stock.getProduct();
+			Integer quantity = stock.getQuantity();
 			transaction.addProducts(product, quantity);
 		}
-		Double totalPrice = transaction.getTotalPrice();
+		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
 		String txt = transactionService.createTransaction(transaction);
 		txt += "Compra realizada com sucesso!\nValor total: "+ totalPrice;
 		return txt;

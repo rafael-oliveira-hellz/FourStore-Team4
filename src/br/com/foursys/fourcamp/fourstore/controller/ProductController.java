@@ -33,14 +33,14 @@ public class ProductController {
 	}
 
 	public String findSku(String sku) throws ProductNotFoundException {
-		return stock.findBySku(sku).toString();
+		return stock.verifyIfExists(sku).toString();
 	}
 
 	public String listAll() {
-		 List<Stock> list = stock.listAll();
+		 List<Stock> stocks = stock.listAll();
 		String txt = "";
-		for (int i = 0; i < list.size(); i++) {
-			txt += list.get(i).getProduct().toString() + ". quantidade: " + list.get(i).getQuantity() + "\n";
+		for (Stock stock : stocks) {
+			txt += stock.getProduct().toString() + ". quantidade: " + stock.getQuantity() + "\n";
 		}
 		return txt;
 	}
@@ -51,24 +51,26 @@ public class ProductController {
 	}
 
 	public String update(String sku, Integer quantity) throws ProductNotFoundException {
-		Product product = stock.findBySku(sku);
+		Product product = stock.verifyIfExists(sku);
 		if (product == null) {
 			return " Produto não encontrado!";
-		}
+		} else {
 		stock.reStock(sku, quantity);
 		return " Produto atualizado com sucesso ";
+		}
 	}
 
 	public String update(String sku, Double buyPrice, Double sellPrice)
 			throws ProductNotFoundException, InvalidSellValueException {
-		Product product = stock.findBySku(sku);
+		Product product = stock.verifyIfExists(sku);
 		if (product == null) {
 			return " Produto não encontrado!";
-		}
+		} else {
 		product.setBuyPrice(buyPrice);
 		product.setSellPrice(sellPrice);
 		stock.validateProfit(product);
 		return "Produto atualizado com sucesso ";
+		}
 	}
 
 }

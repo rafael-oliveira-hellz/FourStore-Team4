@@ -10,36 +10,35 @@ import br.com.foursys.fourcamp.fourstore.model.Stock;
 
 public class ProductData implements DataInterface {
 
-	public static List<Stock> listProduct = new ArrayList<>();
+	public static List<Stock> productList = new ArrayList<>();
 
 	@Override
 	public void save(Object object) {
 
 		Stock stock = (Stock) object;
-		listProduct.add(stock);
+		productList.add(stock);
 		
 	}
 
 	public void deleteBySku(String sku) {
-		for (int i = 0; i < listProduct.size(); i++) {
-			String p = listProduct.get(i).getProduct().getSku();
-			if (p.equals(sku)) {
-				listProduct.remove(i);
+		for (Stock stock : productList) {
+			String product = stock.getProduct().getSku();
+			if (product.equals(sku)) {
+				productList.remove(stock);
 			}
 		}
 	}
 
 	@Override
 	public List<Stock> findAll() {
-		return listProduct;
+		return productList;
 	}
 
 	public Integer getQuantity(String sku) {
 
-		for (int i = 0; i < listProduct.size(); i++) {
-			Stock p = listProduct.get(i);
-			if (p.getProduct().getSku().equals(sku)) {
-				return p.getQuantity();
+		for (Stock stock : productList) {
+			if (stock.getProduct().getSku().equals(sku)) {
+				return stock.getQuantity();
 			}
 		}
 		return null;
@@ -47,18 +46,17 @@ public class ProductData implements DataInterface {
 	}
 
 	public Product findBySku(String sku) {
-		for (int i = 0; i < listProduct.size(); i++) {
-			Stock p = listProduct.get(i);
-			if (p.getProduct().getSku().equals(sku)) {
-				return p.getProduct();
+		for (Stock stock : productList) {
+			if (stock.getProduct().getSku().equals(sku)) {
+				return stock.getProduct();
 			}
 		}
 		return null;
 	}
 
 	public void setQuantity(Object object) {
-		for (int i = 0; i < listProduct.size(); i++) {
-			Stock p = listProduct.get(i);
+		for (int i = 0; i < productList.size(); i++) {
+			Stock p = productList.get(i);
 			Stock stock = (Stock) object;
 			String sku = stock.getProduct().getSku();
 			Integer newQuantity = stock.getQuantity();

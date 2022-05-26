@@ -5,7 +5,7 @@ public class StockInsufficientException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public StockInsufficientException() {
-        super();
+        super("Estoque do produto é insuficiente para realizar a operação!");
     }
 	
 }

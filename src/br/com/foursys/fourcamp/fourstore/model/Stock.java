@@ -22,7 +22,17 @@ public class Stock {
 		this.quantity = quantity;
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Stock stock = (Stock) o;
+		return product.equals(stock.product);
+	}
 	
 }
 

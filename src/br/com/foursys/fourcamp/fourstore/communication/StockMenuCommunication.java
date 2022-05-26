@@ -1,6 +1,5 @@
 package br.com.foursys.fourcamp.fourstore.communication;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import br.com.foursys.fourcamp.fourstore.controller.ProductController;
@@ -220,16 +219,17 @@ public class StockMenuCommunication {
 				continue;
 			}
 		}
-
+		System.out.println(sku);
 		System.out.println(productController.insertProduct(sku, description, quantity, buyPrice, sellPrice));
 	}
 
 	public static void searchForSku() {
-
+		
 	}
 
 	public static void listAllStock() {
-
+		System.out.println( productController.listAll());
+		
 	}
 
 	public static void updateProduct() {

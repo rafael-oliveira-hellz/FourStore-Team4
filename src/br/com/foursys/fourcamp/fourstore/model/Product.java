@@ -29,6 +29,7 @@ public class Product {
 		this.buyPrice = buyPrice;
 		this.sellPrice = sellPrice;
 		parseSku(sku);
+		this.sku = sku;
 	}
 	
 	private void parseSku(String sku) {

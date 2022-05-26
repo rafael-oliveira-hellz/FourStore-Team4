@@ -191,16 +191,15 @@ public class StockMenuCommunication {
 		while (!validate) {
 			try {
 				System.out.print("Digite a quantidade a ser adicionada: ");
-				quantity = sc.nextInt();
+				quantity = Integer.parseInt(sc.nextLine());
 				validate = true;
-			} catch (InputMismatchException e) {
+			} catch (Exception e) {
 				System.out.println("Quantidade inválida");
 				continue;
 			}
 		}
 		
 		System.out.print("\nDigite a descrição: ");
-		sc.nextLine();
 		String description = sc.nextLine();
 		
 		validate = false;
@@ -210,10 +209,10 @@ public class StockMenuCommunication {
 		while (!validate) {
 			try {
 				System.out.print("\nDigite o preço de compra: ");
-				buyPrice = sc.nextDouble();
+				buyPrice = Double.parseDouble(sc.nextLine());
 				
 				System.out.print("\nDigite o preço de venda: ");
-				sellPrice = sc.nextDouble();
+				sellPrice = Double.parseDouble(sc.nextLine());
 				
 				validate = true;
 			} catch (Exception e) {

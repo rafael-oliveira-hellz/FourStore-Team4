@@ -233,8 +233,46 @@ public class StockMenuCommunication {
 		
 	}
 
-	public static void updateProduct() {
-		
+	public static void updateProductQuantity() {
+		boolean validate = false;
+		while (!validate) {
+			System.out.println("\nAtualizar Quantidade do Estoque\n");
+			try {
+				System.out.print("Digite o SKU do produto: ");
+				String sku = sc.nextLine();
+				System.out.print("Digite a quantidade do produto: ");
+				Integer quantity = sc.nextInt();
+				validate = true;
+				productController.update(sku, quantity);
+			} catch (Exception e) {
+				System.out.println("Opção inválida");
+				continue;
+			}
+
+		}
+
+	}
+
+	public static void updateProductPrice() {
+		boolean validate = false;
+		while (!validate) {
+			System.out.println("\nAtualizar Quantidade do Estoque\n");
+			try {
+				System.out.print("Digite o SKU do produto: ");
+				String sku = sc.nextLine();
+				System.out.print("Digite o preço de compra do produto: ");
+				Double purchasePrice = sc.nextDouble();
+				System.out.print("Digite o preço de venda do produto: ");
+				Double salePrice = sc.nextDouble();
+				validate = true;
+				productController.update(sku, purchasePrice, salePrice);
+			} catch (Exception e) {
+				System.out.println("Opção inválida");
+				continue;
+			}
+
+		}
+
 	}
 	
 	public static void deleteProduct() throws ProductNotFoundException {

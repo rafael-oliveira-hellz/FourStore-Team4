@@ -201,10 +201,10 @@ public class MainMenu {
 				option = sc.nextInt();
 				switch (option) {
 				case 1:
-					StockMenuCommunication.createProduct();
+					StockMenuCommunication.updateProductQuantity();
 					break;
 				case 2:
-					StockMenuCommunication.searchForSku();
+					StockMenuCommunication.updateProductPrice();
 					break;
 				case 3:
 					StockMenuCommunication.deleteProduct();

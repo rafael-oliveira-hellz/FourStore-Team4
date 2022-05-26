@@ -44,7 +44,7 @@ public class Costumer {
 
 	@Override
 	public String toString() {
-		return "Costumer [name=" + name + ", cpf=" + cpf + "]";
+		return "Cliente " + name + " com o cpf=" + cpf;
 	}
 	
 	

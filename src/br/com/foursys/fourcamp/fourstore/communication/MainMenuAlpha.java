@@ -137,7 +137,7 @@ public class MainMenuAlpha {
 
 	}
 
-	private void transactionMenu() {
+	private void transactionMenu() throws ProductNotFoundException {
 		Integer option;
 		boolean validate = false;
 

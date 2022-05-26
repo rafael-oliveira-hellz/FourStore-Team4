@@ -7,6 +7,7 @@ import br.com.foursys.fourcamp.fourstore.enums.BrandEnum;
 import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
+import br.com.foursys.fourcamp.fourstore.exception.StockInsufficientException;
 
 public class MainMenuAlpha {
 
@@ -40,7 +41,7 @@ public class MainMenuAlpha {
 		}
 	}
 
-	public void menu() throws InvalidSellValueException, ProductNotFoundException {
+	public void menu() throws InvalidSellValueException, ProductNotFoundException, StockInsufficientException {
 		boolean validator = true;
 		Scanner input = new Scanner(System.in);
 		String option = " ";
@@ -137,7 +138,7 @@ public class MainMenuAlpha {
 
 	}
 
-	private void transactionMenu() throws ProductNotFoundException {
+	private void transactionMenu() throws ProductNotFoundException, StockInsufficientException {
 		Integer option;
 		boolean validate = false;
 

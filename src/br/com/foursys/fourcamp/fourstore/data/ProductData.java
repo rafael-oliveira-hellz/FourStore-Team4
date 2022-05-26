@@ -11,7 +11,7 @@ import br.com.foursys.fourcamp.fourstore.model.Stock;
 public class ProductData implements DataInterface {
 
 	public static List<Stock> productList = new ArrayList<>();
-
+	
 	@Override
 	public void save(Object object) {
 

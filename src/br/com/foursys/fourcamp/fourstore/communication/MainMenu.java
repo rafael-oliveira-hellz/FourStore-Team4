@@ -1,8 +1,8 @@
 package br.com.foursys.fourcamp.fourstore.communication;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import br.com.foursys.fourcamp.fourstore.controller.ProductController;
 import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
@@ -42,6 +42,7 @@ public class MainMenu {
 
 	public void menu() throws InvalidSellValueException, ProductNotFoundException, StockInsufficientException {
 		boolean validator = true;
+		boolean initialStock = false;		
 		Scanner input = new Scanner(System.in);
 		String option = " ";
 		while (validator) {
@@ -67,7 +68,7 @@ public class MainMenu {
 				transactionMenu();
 
 			} else if (option.equals("2")) {
-				stockMenu();
+				initialStock = stockMenu(initialStock);
 
 			} else {
 				System.err.println("Digite uma opção válida");
@@ -84,10 +85,10 @@ public class MainMenu {
 		}
 	}
 
-	private void stockMenu() throws InvalidSellValueException, ProductNotFoundException {
+	private boolean stockMenu(boolean initialStock) throws InvalidSellValueException, ProductNotFoundException {
 		Integer option;
 		boolean validate = false;
-
+		
 		while (!validate) {
 			System.out.println();
 			System.out.println("########  MENU ESTOQUE ########");
@@ -97,8 +98,9 @@ public class MainMenu {
 			System.out.println("| 3 - LISTAR TODO ESTOQUE      |");
 			System.out.println("| 4 - ATUALIZAR PRODUTO        |");
 			System.out.println("| 5 - VOLTAR AO MENU ANTERIOR  |");
+			System.out.println("| 6 - INICIALIZAR ESTOQUE      |");
 			System.out.println("+------------------------------+");
-			System.out.println("| 6 - SAIR                     |");
+			System.out.println("| 7 - SAIR                     |");
 			System.out.println("+------------------------------+");
 			System.out.print("\nOpção: ");
 
@@ -120,6 +122,13 @@ public class MainMenu {
 				case 5:
 					break;
 				case 6:
+					if(!initialStock) {
+				
+						initialStock();
+						return true;
+					}				
+					break;
+				case 7:
 					System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
 					System.exit(0);
 					break;
@@ -134,7 +143,7 @@ public class MainMenu {
 			}
 
 		}
-
+		return true;
 	}
 
 	private void transactionMenu() throws ProductNotFoundException, StockInsufficientException {
@@ -224,4 +233,14 @@ public class MainMenu {
 		}
 
 	}
+	
+	public void initialStock() throws InvalidSellValueException {
+		ProductController controller = new ProductController();
+	controller.insertProduct("OBT3711415123655", "Camiseta Teste", 10, 10.00, 20.00);
+	controller.insertProduct("AVN4312425223956", "Meia Teste", 35, 2.50, 10.00);
+	controller.insertProduct("RVP4511415223354", "Shorts Teste", 55, 38.50, 80.00);
+	controller.insertProduct("OLP3211425223452", "Bermuda Teste", 55, 20.50, 62.00);
+	}
 }
+
+

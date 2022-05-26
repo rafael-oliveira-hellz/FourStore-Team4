@@ -52,37 +52,24 @@ public class MainMenu {
 				System.out.println("  " + navigation.getOption() + " - " + navigation.getDescription());
 			}
 			System.out.println("|------------------|");
-
 			System.out.print("Opção: ");
-
 			option = input.nextLine();
-
 			System.out.println();
-			if (option.equals("0")) {
-
-				System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
-				System.exit(0);
-				input.close();
-
-			} else if (option.equals("1")) {
-				transactionMenu();
-
-			} else if (option.equals("2")) {
-				initialStock = stockMenu(initialStock);
-
-			} else {
-				System.err.println("Digite uma opção válida");
-				ThreadDelay();
+			
+			switch (option) {
+				case "0" -> {
+					System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
+					System.exit(0);
+				}
+				case "1" -> transactionMenu();
+				case "2" -> initialStock = stockMenu(initialStock);
+				default -> {
+					System.err.println("Digite uma opção válida");
+					ThreadDelay();
+				} 
 			}
 		}
-	}
-
-	public void ThreadDelay() {
-		try {
-			Thread.sleep(1L);
-		} catch (InterruptedException e) {
-			System.out.println("Nunca vai cair aqui");
-		}
+		
 	}
 
 	private boolean stockMenu(boolean initialStock) throws InvalidSellValueException, ProductNotFoundException {
@@ -107,36 +94,24 @@ public class MainMenu {
 			try {
 				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
-				case 1:
-					StockMenuCommunication.createProduct();
-					break;
-				case 2:
-					StockMenuCommunication.searchForSku();
-					break;
-				case 3:
-					StockMenuCommunication.listAllStock();
-					break;
-				case 4:
-					stockMenuUpdate();
-					break;
-				case 5:
-					break;
-				case 6:
-					if(!initialStock) {
-				
-						initialStock();
-						return true;
-					}				
-					break;
-				case 7:
-					System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
-					System.exit(0);
-					break;
-				case default:
-					System.out.println("Opção inválida!");
-					break;
+					case 1 -> StockMenuCommunication.createProduct();					
+					case 2 -> StockMenuCommunication.searchForSku();			
+					case 3 -> StockMenuCommunication.listAllStock();				
+					case 4 -> stockMenuUpdate();
+					case 5 -> {break;}
+					case 6 -> {
+						if(!initialStock) {
+							initialStock();
+							return true;
+						}
+					}
+					case 7 -> {
+						System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
+						System.exit(0);
+						break;
+					}
+					case default -> System.out.println("Opção inválida!");		
 				}
-
 				validate = true;
 			} catch (Exception e) {
 				validate = false;
@@ -154,8 +129,8 @@ public class MainMenu {
 			System.out.println();
 			System.out.println("########  MENU VENDAS ########");
 			System.out.println("+------------------------------+");
-			System.out.println("| 1 - REALIZAR COMPRAS         |");
-			System.out.println("| 2 - HISTÓRICO DE COMPRAS     |");
+			System.out.println("| 1 - REALIZAR VENDAS          |");
+			System.out.println("| 2 - HISTÓRICO DE VENDAS      |");
 			System.out.println("| 3 - VOLTAR AO MENU ANTERIOR  |");
 			System.out.println("+------------------------------+");
 			System.out.println("| 4 - SAIR                     |");
@@ -165,22 +140,15 @@ public class MainMenu {
 			try {
 				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
-				case 1:
-					TransactionCommunication.purchase();
-					break;
-				case 2:
-					TransactionCommunication.listTransactions();;
-					break;
-				case 3:
-					break;
-				case 4:
-					System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
-					System.exit(0);
-					break;
-				case default:
-					System.out.println("Opção inválida!");
-					break;
-				}
+					case 1 -> TransactionCommunication.purchase();
+					case 2 -> TransactionCommunication.listTransactions();					
+					case 3 -> {break;}
+					case 4 -> {
+						System.out.println("### ENCERRANDO SISTEMA... ATÉ A PROXIMA ###");
+						System.exit(0);
+					}
+					case default -> System.out.println("Opção inválida!");					
+					}
 
 				validate = true;
 			} catch (Exception e) {
@@ -209,20 +177,11 @@ public class MainMenu {
 			try {
 				option = Integer.parseInt(sc.nextLine());
 				switch (option) {
-				case 1:
-					StockMenuCommunication.updateProductQuantity();
-					break;
-				case 2:
-					StockMenuCommunication.updateProductPrice();
-					break;
-				case 3:
-					StockMenuCommunication.deleteProduct();
-					break;
-				case 4:
-					System.exit(0);
-				case default:
-					System.out.println("Opção inválida!");
-					break;
+					case 1 -> StockMenuCommunication.updateProductQuantity();					
+					case 2 -> StockMenuCommunication.updateProductPrice();						
+					case 3 -> StockMenuCommunication.deleteProduct();						
+					case 4 -> System.exit(0);
+					case default -> System.out.println("Opção inválida!");					
 				}
 
 				validate = true;
@@ -232,6 +191,14 @@ public class MainMenu {
 
 		}
 
+	}
+	
+	public void ThreadDelay() {
+		try {
+			Thread.sleep(1L);
+		} catch (InterruptedException e) {
+			System.out.println("Nunca vai cair aqui");
+		}
 	}
 	
 	public void initialStock() throws InvalidSellValueException {

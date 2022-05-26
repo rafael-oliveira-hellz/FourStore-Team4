@@ -18,7 +18,8 @@ public class TransactionController {
 		this.transactionService = new TransactionService();
 	}
 
-	public String purchase(List<Stock> stocks, String name, Integer payment, Integer paymentData) throws StockInsufficientException, ProductNotFoundException {
+	public String purchase(List<Stock> stocks, String name, Integer payment, Integer paymentData)
+			throws StockInsufficientException, ProductNotFoundException {
 		Costumer costumer = new Costumer(name, payment, paymentData);
 		Transaction transaction = new Transaction(costumer);
 		for (Stock stock : stocks) {
@@ -30,11 +31,12 @@ public class TransactionController {
 		String txt = transactionService.createTransaction(transaction);
 		transaction.setTotalPrice();
 		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
-		txt += "\nCompra realizada com sucesso!\nValor total: "+ totalPrice;
+		txt += "\nCompra realizada com sucesso!\nValor total: " + totalPrice;
 		return txt;
 	}
 
-	public String purchase(List<Stock> stocks, String name, String cpf, Integer payment, Integer paymentData) throws StockInsufficientException, ProductNotFoundException {
+	public String purchase(List<Stock> stocks, String name, String cpf, Integer payment, Integer paymentData)
+			throws StockInsufficientException, ProductNotFoundException {
 		Costumer costumer = new Costumer(name, cpf, payment, paymentData);
 		Transaction transaction = new Transaction(costumer);
 		for (Stock stock : stocks) {
@@ -42,12 +44,13 @@ public class TransactionController {
 			Integer quantity = stock.getQuantity();
 			transaction.addProducts(product, quantity);
 		}
-		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
 		String txt = transactionService.createTransaction(transaction);
-		txt += "Compra realizada com sucesso!\nValor total: "+ totalPrice;
+		transaction.setTotalPrice();
+		String totalPrice = String.format("R$%.2f", transaction.getTotalPrice());
+		txt += "\nCompra realizada com sucesso!\nValor total: " + totalPrice;
 		return txt;
 	}
-	
+
 	public String listAll() {
 		Double totalProfit = 0.0;
 		String totalList = "";
@@ -56,9 +59,8 @@ public class TransactionController {
 			totalList += transaction.toString() + "\n";
 			totalProfit += transaction.getTotalPrice();
 		}
-		totalList += String.format("Soma do valor das vendas: R$ %.2f", totalProfit); 
+		totalList += String.format("Soma do valor das vendas: R$ %.2f", totalProfit);
 		return totalList;
 	}
-	
 
 }

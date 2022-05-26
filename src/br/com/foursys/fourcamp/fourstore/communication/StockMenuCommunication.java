@@ -32,10 +32,8 @@ public class StockMenuCommunication {
 			}
 
 			try {
-				sc.nextLine();
 				System.out.print("Escolha o dígito de uma marca: ");
-				firstOption = sc.nextInt();
-
+				firstOption = Integer.parseInt(sc.nextLine());
 				optionString = BrandEnum.getByOption(firstOption).getKey();
 
 				validate = true;
@@ -57,7 +55,6 @@ public class StockMenuCommunication {
 
 			try {
 				System.out.print("Escolha o dígito de um tamanho: ");
-				sc.nextLine();
 				option = sc.nextLine();
 
 				optionString = SizeEnum.get(option.toString()).getKey();

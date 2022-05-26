@@ -33,6 +33,10 @@ public class Stock {
         Stock stock = (Stock) o;
 		return product.equals(stock.product);
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Stock [Produto: " + product.toString() + ", quantidade: " + quantity + "]";
+	}
 }
 

@@ -218,8 +218,8 @@ public class StockMenuCommunication {
 				continue;
 			}
 		}
-		System.out.println(sku);
-		System.out.println(productController.insertProduct(sku, description, quantity, buyPrice, sellPrice));
+		
+		System.out.println(productController.insertProduct(sku, description, quantity, buyPrice, sellPrice) + ", SKU: " + sku);
 	}
 
 	public static void searchForSku() throws ProductNotFoundException {

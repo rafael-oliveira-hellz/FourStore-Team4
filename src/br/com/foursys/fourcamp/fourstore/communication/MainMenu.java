@@ -170,8 +170,9 @@ public class MainMenu {
 			System.out.println("| 1 - ATUALIZAR QUANTIDADE     |");
 			System.out.println("| 2 - ATUALIZAR PREÇO          |");
 			System.out.println("| 3 - EXCLUIR PRODUTO          |");
+			System.out.println("| 4 - VOLTAR AO MENU ANTERIOR  |");
 			System.out.println("+------------------------------+");
-			System.out.println("| 4 - SAIR                     |");
+			System.out.println("| 5 - SAIR                     |");
 			System.out.println("+------------------------------+");
 			System.out.print("\nOpção: ");
 
@@ -180,8 +181,9 @@ public class MainMenu {
 				switch (option) {
 					case 1 -> StockMenuCommunication.updateProductQuantity();					
 					case 2 -> StockMenuCommunication.updateProductPrice();						
-					case 3 -> StockMenuCommunication.deleteProduct();						
-					case 4 -> System.exit(0);
+					case 3 -> StockMenuCommunication.deleteProduct();
+					case 4 -> stockMenu(validate);
+					case 5 -> System.exit(0);
 					case default -> System.out.println("Opção inválida!");					
 				}
 

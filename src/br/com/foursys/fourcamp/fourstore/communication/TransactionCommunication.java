@@ -18,9 +18,9 @@ public class TransactionCommunication {
 
 	public static void purchase() throws ProductNotFoundException, StockInsufficientException {
 		List<Stock> cart = new ArrayList<Stock>();
-		String option = "n";
+		String option = "s";
 
-		while (!option.equalsIgnoreCase("S")) {
+		while (option.equalsIgnoreCase("S")) {
 			System.out.print("Digite o SKU do produto: ");
 			String sku = sc.nextLine();
 			Integer quantity = 0;
@@ -30,12 +30,25 @@ public class TransactionCommunication {
 				try {
 					System.out.print("Digite a quantidade que deseja comprar: ");
 					quantity = Integer.parseInt(sc.nextLine());
+					validate = true;
 				} catch (Exception e) {
 					System.out.println("Quantidade inválida!");
 				}
-			}
+				
+				try {
+					Stock stock = productController.validatePrePurchase(sku, quantity);
+					if (stock != null) {
+						cart.add(stock);
+						validate = true;
+					} else {
+						System.out.println("Quantidade insuficiente ou produto não encontrado!");
+					}
 
-			cart.add(productController.validatePrePurchase(sku, quantity));
+				} catch (Exception e) {
+					System.out.println("Quantidade insuficiente ou produto não encontrado!");
+				}
+			}
+				
 
 			System.out.print("Deseja continuar? S/N ");
 			option = sc.nextLine();
@@ -76,7 +89,7 @@ public class TransactionCommunication {
 		}
 
 		Integer payment = 0;
-		
+
 		try {
 			System.out.print("Escolha um método pelo dígito: ");
 			payment = Integer.parseInt(sc.nextLine());
@@ -84,7 +97,7 @@ public class TransactionCommunication {
 		} catch (Exception e) {
 			System.out.println("Opção inválida!");
 		}
-		
+
 		if (cpf.equals("")) {
 			System.out.println(transactionController.purchase(cart, name, payment));
 		} else {

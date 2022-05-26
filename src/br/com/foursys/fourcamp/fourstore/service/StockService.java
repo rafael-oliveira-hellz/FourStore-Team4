@@ -22,7 +22,7 @@ public class StockService {
 	public String createProductStock(Product product, Integer quantity) throws InvalidSellValueException {
 		validateProfit(product);
         String savedProduct = setProduct(product, quantity);
-        return "Adicionadas " + savedProduct;
+        return savedProduct;
 	}
 
 	public List<Stock> listAll() {

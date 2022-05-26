@@ -68,4 +68,11 @@ public enum BrandEnum {
                 return keyValue;
         return null;
     }
+    
+    public static BrandEnum getByOption(Integer option) {
+        for (BrandEnum keyValue : EnumSet.allOf(BrandEnum.class))
+            if (keyValue.getOption().equals(option))
+                return keyValue;
+        return null;
+    }
 }

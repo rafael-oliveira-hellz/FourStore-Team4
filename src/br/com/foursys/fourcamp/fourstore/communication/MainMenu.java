@@ -22,7 +22,7 @@ public class MainMenu {
 		Scanner sc = new Scanner(System.in);
 		{
 			String mockUser = "Admin";
-			String mockPassword = "****";
+			String mockPassword = "********";
 
 			while (true) {
 				System.out.println("### FAÇA SEU LOGIN ###");

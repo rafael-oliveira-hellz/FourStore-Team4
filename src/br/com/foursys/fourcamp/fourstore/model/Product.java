@@ -1,5 +1,6 @@
 package br.com.foursys.fourcamp.fourstore.model;
 
+import br.com.foursys.fourcamp.fourstore.enums.BrandEnum;
 import br.com.foursys.fourcamp.fourstore.enums.CategoryEnum;
 import br.com.foursys.fourcamp.fourstore.enums.ColorEnum;
 import br.com.foursys.fourcamp.fourstore.enums.DepartmentEnum;
@@ -31,7 +32,7 @@ public class Product {
 	}
 	
 	private void parseSku(String sku) {
-		this.brand = sku.substring(0, 3);
+		this.brand = BrandEnum.get(sku.substring(0, 3)).getDescription();
 		this.size = SizeEnum.get(sku.substring(3, 5)).getDescription();
 		this.category = CategoryEnum.get(sku.substring(5, 7)).getDescription();
 		this.season = SeasonEnum.get(sku.substring(7, 9)).getDescription();

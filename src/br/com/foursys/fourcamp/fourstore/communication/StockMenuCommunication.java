@@ -233,6 +233,6 @@ public class StockMenuCommunication {
 	}
 
 	public static void updateProduct() {
-
+		
 	}
 }

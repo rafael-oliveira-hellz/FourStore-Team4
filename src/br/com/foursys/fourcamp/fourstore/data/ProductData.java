@@ -62,7 +62,7 @@ public class ProductData implements DataInterface {
 			Integer newQuantity = stock.getQuantity();
 			Integer quantity = p.getQuantity();
 			if (p.getProduct().getSku().equals(sku)) {
-				p.setQuantity(newQuantity + quantity);
+				p.setQuantity(newQuantity);
 			}
 		}
 

@@ -3,7 +3,6 @@ package br.com.foursys.fourcamp.fourstore.communication;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import br.com.foursys.fourcamp.fourstore.enums.BrandEnum;
 import br.com.foursys.fourcamp.fourstore.enums.MenuEnum;
 import br.com.foursys.fourcamp.fourstore.exception.InvalidSellValueException;
 import br.com.foursys.fourcamp.fourstore.exception.ProductNotFoundException;
@@ -192,6 +191,7 @@ public class MainMenu {
 			System.out.println("+------------------------------+");
 			System.out.println("| 1 - ATUALIZAR QUANTIDADE     |");
 			System.out.println("| 2 - ATUALIZAR PREÇO          |");
+			System.out.println("| 3 - ATUALIZAR PREÇO          |");
 			System.out.println("+------------------------------+");
 			System.out.println("| 6 - SAIR                     |");
 			System.out.println("+------------------------------+");
@@ -205,6 +205,9 @@ public class MainMenu {
 					break;
 				case 2:
 					StockMenuCommunication.searchForSku();
+					break;
+				case 3:
+					StockMenuCommunication.deleteProduct();
 					break;
 				case default:
 					System.out.println("Opção inválida!");

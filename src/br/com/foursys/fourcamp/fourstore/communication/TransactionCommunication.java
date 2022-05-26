@@ -60,7 +60,11 @@ public class TransactionCommunication {
 			System.out.println(stock.toString());
 			totalPrice += stock.getProduct().getSellPrice() * stock.getQuantity();
 		}
-
+		
+		if (totalPrice == 0.0) {
+			return;
+		}
+		
 		System.out.println("Preço total: " + totalPrice);
 
 		System.out.println("\nDigite o nome do cliente: ");

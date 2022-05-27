@@ -109,7 +109,7 @@ public class TransactionCommunication {
 			try {
 				System.out.print("Escolha um método pelo dígito: ");
 				payment = Integer.parseInt(sc.nextLine());
-				
+
 				paymentData = checkPayment(payment);
 				if (paymentData == null || paymentData.equals("")) {
 					paymentData = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethod();
@@ -186,11 +186,8 @@ public class TransactionCommunication {
 					data = "Débito\n" + "Número do cartão: ";
 					temp = sc.nextLine();
 
-					if (temp.length() != 12) {
-						System.err.println("Número do cartão inválido! Precisa ter 12 digitos");
-					} else {
-						cardNumber = Integer.parseInt(temp);
-						data += cardNumber + "\nCód. de Segurança: ";
+					if (temp.length() == 12 && temp.matches("[0-9]+")) {
+						data += temp + "\nCód. de Segurança: ";
 
 						System.out.print("Digite o código de segurança: ");
 						temp = sc.nextLine();
@@ -214,6 +211,8 @@ public class TransactionCommunication {
 								return data;
 							}
 						}
+					} else {
+						System.err.println("Número do cartão inválido! Precisa ter 12 digitos");
 					}
 				} catch (Exception e) {
 					System.err.println("Entrada inválida");

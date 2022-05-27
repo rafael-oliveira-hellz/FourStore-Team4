@@ -59,7 +59,7 @@ public class TransactionController {
 			totalList += transaction.toString() + "\n";
 			totalProfit += transaction.getTotalPrice();
 		}
-		totalList += String.format("Soma do valor das vendas: R$ %.2f", totalProfit);
+		totalList += String.format("\n\nSoma do valor das vendas: R$ %.2f", totalProfit);
 		return totalList;
 	}
 

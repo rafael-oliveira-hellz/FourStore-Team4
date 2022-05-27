@@ -111,6 +111,9 @@ public class TransactionCommunication {
 				payment = Integer.parseInt(sc.nextLine());
 				
 				paymentData = checkPayment(payment);
+				if (paymentData == null || paymentData.equals("")) {
+					paymentData = PaymentMethodEnum.getByPaymentMethodId(payment).getPaymentMethod();
+				}
 				validate = true;
 			} catch (Exception e) {
 				System.out.println("Opção inválida!");

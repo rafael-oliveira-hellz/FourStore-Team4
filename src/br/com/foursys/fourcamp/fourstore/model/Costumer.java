@@ -6,24 +6,17 @@ public class Costumer {
 	private String name;
 	private String cpf;
 	private String paymentMethod;
-	private Integer paymentData;
+	private String paymentData;
 	
-	public Integer getPaymentData() {
-		return paymentData;
-	}
 
-	public void setPaymentData(Integer paymentData) {
-		this.paymentData = paymentData;
-	}
-
-	public Costumer(String name, String cpf, Integer paymentMethod, Integer paymentData) {
+	public Costumer(String name, String cpf, Integer paymentMethod, String paymentData) {
 		this.name = name;
 		this.cpf = cpf;
 		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 		this.paymentData = paymentData;
 	}
 
-	public Costumer(String name, Integer paymentMethod, Integer paymentData) {
+	public Costumer(String name, Integer paymentMethod, String paymentData) {
 		this.name = name;
 		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 		this.paymentData = paymentData;
@@ -53,6 +46,14 @@ public class Costumer {
 		this.paymentMethod = PaymentMethodEnum.getByPaymentMethodId(paymentMethod).getPaymentMethod();
 	}
 
+	public String getPaymentData() {
+		return paymentData;
+	}
+
+	public void setPaymentData(String paymentData) {
+		this.paymentData = paymentData;
+	}
+	
 	@Override
 	public String toString() {
 		String message = (cpf == null) ? hasNoCpf() : hasCpf();
@@ -60,16 +61,16 @@ public class Costumer {
 	}
 
 	public String hasNoCpf() {
-		if (paymentData != 99999999) {
-			return "Cliente " + name + " com o cpf " + cpf + " cartão/pix " + paymentData;
+		if (paymentData != null || paymentData.equalsIgnoreCase("")) {
+			return "Cliente " + name + " com o cpf " + cpf + "\n" +  paymentData;
 			} else {
 				return "Cliente " + name + " com o cpf " + cpf + ", pagou à vista";
 			}
 	}
 
 	public String hasCpf() {
-		if (paymentData != 99999999) {
-			return "Cliente " + name + " cartão/pix " + paymentData;
+		if (paymentData != null || paymentData.equals("")) {
+			return "Cliente " + name + paymentData;
 		} else {
 				return "Cliente " + name + ", pagou à vista";
 		}

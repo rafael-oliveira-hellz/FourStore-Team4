@@ -163,12 +163,14 @@ public class TransactionCommunication {
 
 							if (temp.substring(2, 3).equals("/") && temp.length() == 5) {
 								String[] date = temp.split("/");
-								Integer.parseInt(date[0]);
-								Integer.parseInt(date[1]);
+								Integer month = Integer.parseInt(date[0]);
+								Integer year = Integer.parseInt(date[1]);
 
-								data += temp;
-								validator = true;
-								return data;
+								if (month > 0 && month < 13 && year > 21) {
+									data += temp;
+									validator = true;
+									return data;
+								}
 							}
 						}
 					} else {
@@ -203,12 +205,14 @@ public class TransactionCommunication {
 
 							if (temp.substring(2, 3).equals("/") && temp.length() == 5) {
 								String[] date = temp.split("/");
-								Integer.parseInt(date[0]);
-								Integer.parseInt(date[1]);
+								Integer month = Integer.parseInt(date[0]);
+								Integer year = Integer.parseInt(date[1]);
 
-								data += temp;
-								validator = true;
-								return data;
+								if (month > 0 && month < 13 && year > 21) {
+									data += temp;
+									validator = true;
+									return data;
+								}
 							}
 						}
 					} else {

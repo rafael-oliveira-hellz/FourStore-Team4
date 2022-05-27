@@ -60,19 +60,19 @@ public class Costumer {
 		return message;
 	}
 
-	public String hasNoCpf() {
+	public String hasCpf() {
 		if (paymentData != null || paymentData.equalsIgnoreCase("")) {
-			return "Cliente " + name + " com o cpf " + cpf + "\n" +  paymentData;
+			return name + " com o cpf " + cpf + "\n" +  paymentData;
 			} else {
-				return "Cliente " + name + " com o cpf " + cpf + ", pagou à vista";
+				return name + " com o cpf " + cpf + ", pagou à vista";
 			}
 	}
 
-	public String hasCpf() {
+	public String hasNoCpf() {
 		if (paymentData != null || paymentData.equals("")) {
-			return "Cliente " + name + paymentData;
+			return name + " " + paymentData;
 		} else {
-				return "Cliente " + name + ", pagou à vista";
+				return name + ", pagou à vista";
 		}
 	}
 		

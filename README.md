@@ -21,6 +21,9 @@
 
 <br>
 
+## Documentação
+
+[Documentação](https://github.com/rafael-oliveira-hellz/FourStore-Team4/blob/master/DOCUMENTA%C3%87%C3%83O%20FOURSTORE%20ATUAL.docx)
 
 ## 🔥 Team 4
 <table>

@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum TypeOfMerchandiseEnum {
-	PANTS("231", "Cal√ßa"),
+	PANTS("231", "CalÁa"),
 	TSHIRT("232", "Camisa"),
 	BLOUSE("233", "Blusa"),
-	SHOES("234", "T√™nis"),
+	SHOES("234", "TÈnis"),
 	FLIPFLOPS("235", "Chinelos"),
-	INTIMATE("236", "Roupa √çntima"),
+	INTIMATE("236", "Roupa intima"),
 	MAKEUP("237", "Maquiagem"),
-	COSMETICS("238", "Cosm√©ticos"),
+	COSMETICS("238", "CosmÈticos"),
 	SCARF("239", "Cachecol"),
 	TIE("240", "Gravata");
 

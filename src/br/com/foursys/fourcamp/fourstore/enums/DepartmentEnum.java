@@ -6,10 +6,10 @@ import java.util.Map;
 
 public enum DepartmentEnum {
 
-	CLOTHING("50", "Vestu√°rio"),
-	SHOES("51", "Cal√ßados"),
+	CLOTHING("50", "Vestu·rio"),
+	SHOES("51", "CalÁados"),
 	PERFUMERY("52", "Perfumaria"),
-	ACCESSORIES("53", "Acess√≥rios");
+	ACCESSORIES("53", "Acessorios");
 
 	public String key;
 	public String description;

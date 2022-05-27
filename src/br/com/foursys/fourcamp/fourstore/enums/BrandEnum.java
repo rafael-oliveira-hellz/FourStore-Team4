@@ -16,7 +16,7 @@ public enum BrandEnum {
     ADIDAS("ADI", "Adidas", 9),
     PUMA("PMA", "Puma", 10),
     OLYMPIKUS("OLP", "Olympikus", 11),
-    OBOTICARIO("OBT", "O Boticário", 12),
+    OBOTICARIO("OBT", "O Boticario", 12),
     NATURA("NTR", "Natura", 13),
     AVON("AVN", "Avon", 14),
     CHANEL5("CNL", "Chanel #5", 15),

@@ -8,7 +8,7 @@ public enum CategoryEnum {
 
 	MALE("10", "Masculino"),
 	FEMALE("11", "Feminino"),
-	BABY("12", "Moda Bebê");
+	BABY("12", "Moda Bebe");
 
 	public String key;
 	public String description;

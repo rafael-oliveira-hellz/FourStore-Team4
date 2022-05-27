@@ -239,7 +239,7 @@ public class StockMenuCommunication {
 			System.out.println("\nAtualizar Quantidade do Estoque\n");
 			try {
 				System.out.print("Digite o SKU do produto: ");
-				String sku = sc.nextLine();
+				String sku = sc.next();
 				System.out.print("Digite a quantidade do produto: ");
 				Integer quantity = sc.nextInt();
 				validate = true;
@@ -259,7 +259,7 @@ public class StockMenuCommunication {
 			System.out.println("\nAtualizar Preço do Estoque\n");
 			try {
 				System.out.print("Digite o SKU do produto: ");
-				String sku = sc.nextLine();
+				String sku = sc.next();
 				System.out.print("Digite o preço de compra do produto: ");
 				Double purchasePrice = sc.nextDouble();
 				System.out.print("Digite o preço de venda do produto: ");

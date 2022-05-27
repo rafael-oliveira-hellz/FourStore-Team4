@@ -13,10 +13,6 @@ public class MainMenu {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) throws InvalidSellValueException, ProductNotFoundException, StockInsufficientException {
-		new MainMenu();
-
-	}
 
 	public MainMenu() throws InvalidSellValueException, ProductNotFoundException, StockInsufficientException {
 		{

@@ -141,13 +141,13 @@ public class TransactionCommunication {
 				try {
 					System.out.print("Digite o numero do cartão");
 					data = "Crédito\n" + "Número do cartão: ";
-					temp = sc.nextLine();
+					temp = sc.next();
 
 					if (temp.length() == 12 && temp.matches("[0-9]+")) {
 						data += temp + "\nCód. de Segurança: ";
 
 						System.out.print("Digite o código de segurança: ");
-						temp = sc.nextLine();
+						temp = sc.next();
 
 						if (temp.length() != 3) {
 							System.err.println("Número do código de segurança inválido! Precisa ter 3 digitos");
@@ -156,7 +156,7 @@ public class TransactionCommunication {
 							data += cardNumber + "\nVencimento: ";
 
 							System.out.print("Digite a data de validade: MM:AA");
-							temp = sc.nextLine();
+							temp = sc.next();
 
 							if (temp.substring(2, 3).equals("/") && temp.length() == 5) {
 								String[] date = temp.split("/");
@@ -183,7 +183,7 @@ public class TransactionCommunication {
 					data = "Débito\n" + "Número do cartão: ";
 					temp = sc.nextLine();
 
-					if (temp.length() != 12) {
+					if (temp.length() < 1) {
 						System.err.println("Número do cartão inválido! Precisa ter 12 digitos");
 					} else {
 						cardNumber = Integer.parseInt(temp);

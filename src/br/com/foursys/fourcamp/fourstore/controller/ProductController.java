@@ -9,6 +9,7 @@ import br.com.foursys.fourcamp.fourstore.model.Stock;
 import br.com.foursys.fourcamp.fourstore.service.StockService;
 
 public class ProductController {
+	
 	private StockService stock;
 
 	public ProductController() {

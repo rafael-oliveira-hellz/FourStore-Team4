@@ -6,12 +6,12 @@ import java.util.Map;
 
 public enum PaymentMethodEnum {
 
-	BILLET("Boleto √† vista", 1),
+	BILLET("Boleto a vista", 1),
 	BILLETINSTALLMENT("Boleto parcelado", 2),
-	CREDITCARD("Cart√£o de cr√©dito", 3),
-	DEBITCARD("Cart√£o de d√©bito", 4),
+	CREDITCARD("Cart„o de crÈdito", 3),
+	DEBITCARD("Cart„o de dÈbito", 4),
 	PIX("Pix", 5),
-	CASH("Dinheiro √† vista", 6);
+	CASH("Dinheiro a vista", 6);
 
 	private final String paymentMethod;
 	private final Integer paymentMethodId;

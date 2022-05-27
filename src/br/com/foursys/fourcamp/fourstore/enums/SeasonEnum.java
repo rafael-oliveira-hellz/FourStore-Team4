@@ -6,7 +6,7 @@ import java.util.Map;
 
 public enum SeasonEnum {
 
-	SUMMER("40", "Ver√£o"),
+	SUMMER("40", "Ver„o"),
 	WINTER("41", "Inverno"),
 	FALL("42", "Outono"),
 	SPRING("43", "Primavera");

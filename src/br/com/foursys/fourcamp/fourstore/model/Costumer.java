@@ -64,15 +64,15 @@ public class Costumer {
 		if (paymentData != null || paymentData.equalsIgnoreCase("")) {
 			return name + " com o cpf " + cpf + "\n" +  paymentData;
 			} else {
-				return name + " com o cpf " + cpf + ", pagou à vista";
+				return name + " com o cpf " + cpf + "\n" + paymentData;
 			}
 	}
 
 	public String hasNoCpf() {
 		if (paymentData != null || paymentData.equals("")) {
-			return name + " " + paymentData;
+			return name + "\n" + paymentData;
 		} else {
-				return name + ", pagou à vista";
+				return name + "\n" + paymentData;
 		}
 	}
 		

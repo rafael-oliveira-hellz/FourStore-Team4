@@ -166,7 +166,7 @@ public class TransactionCommunication {
 								Integer.parseInt(date[0]);
 								Integer.parseInt(date[1]);
 
-								data += temp + "\n";
+								data += temp;
 								validator = true;
 								return data;
 							}
@@ -209,7 +209,7 @@ public class TransactionCommunication {
 								Integer.parseInt(date[0]);
 								Integer.parseInt(date[1]);
 
-								data += temp + "\n";
+								data += temp;
 								validator = true;
 								return data;
 							}
@@ -227,7 +227,7 @@ public class TransactionCommunication {
 				temp = sc.nextLine();
 
 				if (temp != "") {
-					data = "Pix\nChave: " + temp + "\n";
+					data = "Pix\nChave: " + temp;
 					validator = true;
 					return data;
 				} else {

@@ -56,10 +56,10 @@ public class TransactionController {
 		String totalList = "";
 		List<Transaction> list = transactionService.listAll();
 		for (Transaction transaction : list) {
-			totalList += transaction.toString() + "\n";
+			totalList += transaction.toString() + "\n\n";
 			totalProfit += transaction.getTotalPrice();
 		}
-		totalList += String.format("\n\nSoma do valor das vendas: R$ %.2f", totalProfit);
+		totalList += String.format("\nSoma do valor das vendas: R$ %.2f", totalProfit);
 		return totalList;
 	}
 

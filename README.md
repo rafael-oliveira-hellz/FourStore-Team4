@@ -1,5 +1,5 @@
-<h2 align="center">FourStore em construção... 🚧</h2>
-
+<h2 align="center">FourStore 👚</h2>
+<br>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#features">Features</a> •  
@@ -13,11 +13,11 @@
 
 ## ✅ Features
 
-- [ ] Cadastrar Novos Produtos.
-- [ ] Listar Produtos.
-- [ ] Validar Venda.
-- [ ] Verificar disponibilidade no estoque.
-- [ ] Incluir métodos de pagamento
+- [x] Cadastrar Novos Produtos.
+- [x] Listar Produtos.
+- [x] Validar Venda.
+- [x] Verificar disponibilidade no estoque.
+- [x] Incluir métodos de pagamento
 
 <br>
 
